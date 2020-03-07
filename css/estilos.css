@@ -1,0 +1,117 @@
+/* 
+Hoja de estilo 
+No es responsiva, kevin qudo que no es requerimiento
+*/
+
+*{
+	padding: 0;
+	margin: 0;
+	font-family: Arial;
+	color: #FFF;
+}
+
+a{
+	text-decoration: none;
+}
+
+body{
+	background-color: black;
+}
+
+nav{
+	background-color: none;
+	border: 8px solid white;
+	border-radius: 100px;
+	margin: 15rem;
+	width: 60rem;
+	height: 215rem;
+	padding: 11rem;
+	text-align: center;
+	display: inline-block;
+}
+aside{
+	height: 40rem;
+	width: 40rem;
+	border: 8px solid white;
+	text-align: center;
+	display: inline-block;
+}
+.title{
+	font-size: 10rem;
+}
+.subtitle{
+	font-size: 7rem;
+	text-align: left;
+}
+.space{
+	font-size: 7rem;	
+}
+.inputtxt{
+	background: none;
+	color: white;
+	border: 8px solid white;
+	border-radius: 10px;
+	width: 57rem;
+	font-size: 5.25rem;
+}
+.inputbutn{
+	background: none;
+	color: white;
+	border: 8px solid white;
+	border-radius: 10px;
+	width: 57rem;
+	font-size: 5.25rem;
+	text-align: center;
+}
+.inputbutn.int:hover{
+	background: none;
+	color: white;
+	border: 8px solid white;
+	border-radius: 10px;
+	width: 57rem;
+	font-size: 5.25rem;
+	text-align: center;
+	animation-name: chb;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+.btaling{
+	font-size: 10rem;
+	text-align: center;
+}
+.block{
+	display: inline-block;
+	position: absolute;
+	padding-top: 15rem; 
+	padding-bottom: 15rem;
+	width: 73%;
+	height: 89%; 
+}
+.block.start{
+	text-align: right;
+	display: inline-block;
+	position: absolute;
+	padding-top: 15rem; 
+	padding-bottom: 15rem;
+	width: 73%;
+	height: 89%; 
+}
+.Imgico{
+	width: 20rem;
+	height: 20rem;
+}
+.atxt{
+	font-size: 7rem;
+}
+
+@keyframes chb{
+	from{
+		background-color: none;
+		color: white;
+	}
+	to{
+		background-color: white;
+		color: black;
+	}
+}
