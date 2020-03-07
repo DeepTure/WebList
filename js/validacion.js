@@ -1,7 +1,7 @@
 function validar() {
     //ponganle id="usuario" al usuario y id="contraseña" a la contraseña
-    let usuario=document.getElementById("usuario").value
-    let contraseña=document.getElementById("contraseña").value
+    let usuario=document.getElementById("login").usuario.value
+    let contraseña=document.getElementById("login").contraseña.value
     //usuario Kevin
     if(usuario=="Kevin_Jafet" && contraseña=="MoranDT01"){
         alert("Hola "+usuario)

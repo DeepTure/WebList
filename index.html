@@ -40,14 +40,15 @@ body{
 		</div>
 		
 		<div>
-			<form method="post" name="Login">
+			<script type="text/javascript" src="js/validacion.js"></script>
+			<form method="GET" id="login">
 				<p class="subtitle">
 					Usuario
 				</p>
 				<div class="space">
 					<br>
 				</div>
-				<input type="text" name="Account" class="inputtxt">
+				<input type="text" id="usuario" class="inputtxt">
 				<div class="space">
 					<br>
 					<br>
@@ -59,7 +60,7 @@ body{
 				<div class="space">
 					<br>
 				</div>
-				<input type="password" name="Password" class="inputtxt">
+				<input type="password" id="contraseña" class="inputtxt">
 				
 				<div class="space">
 					<br>
@@ -68,7 +69,7 @@ body{
 					<br>
 				</div>
 				<p class="btaling">
-					<input type="button" name="Log" value="Inicia sesi&oacute;n" class="inputbutn int">
+					<input type="button" id="login" value="Inicia sesi&oacute;n" class="inputbutn int" onclick="validar()">
 				</p>
 				<div class="space">
 					<br>
