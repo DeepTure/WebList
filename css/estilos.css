@@ -115,3 +115,13 @@ aside{
 		color: black;
 	}
 }
+.ayuda{
+	text-align: right;
+	display: inline-block;
+	position: absolute;
+	padding-top: 40rem; 
+	padding-bottom: 15rem;
+	width: 73%;
+	height: 89%; 
+	
+}
