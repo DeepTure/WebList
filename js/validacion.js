@@ -12,7 +12,7 @@ function validar() {
     }else if(usuario=="Daniel_Cuellar" && contraseña=="BetancourtDT03"){
         alert("Hola "+usuario)
     //usuario De la O
-    }else if(usuario=="Cristopher_De_la_O" && contraseña=="FloresDT04"){
+    }else if(usuario=="Cristopher_De_La_O" && contraseña=="FloresDT04"){
         alert("Hola "+usuario)
     //usuario Piña
     }else if(usuario=="Leo_Yeudiel" && contraseña=="PiñaDT05"){
