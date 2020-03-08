@@ -81,7 +81,7 @@ body{
 		width: 2.9rem;
 		text-align: center;
 		animation-name: chb;
-		animation-duration: 3s;
+		animation-duration: 1.2s;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
 		font-size: 0.25rem;
@@ -182,7 +182,7 @@ body{
 		width: 8rem;
 		text-align: center;
 		animation-name: chb;
-		animation-duration: 3s;
+		animation-duration: 1.2s;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
 		font-size: 0.8rem;
@@ -284,7 +284,7 @@ body{
 		font-size: 1rem;
 		text-align: center;
 		animation-name: chb;
-		animation-duration: 3s;
+		animation-duration: 1.2s;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
 	}
@@ -385,7 +385,7 @@ body{
 		font-size: 1.2rem;
 		text-align: center;
 		animation-name: chb;
-		animation-duration: 3s;
+		animation-duration: 1.2s;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
 	}
@@ -486,7 +486,7 @@ body{
 		font-size: 1.8rem;
 		text-align: center;
 		animation-name: chb;
-		animation-duration: 3s;
+		animation-duration: 1.2s;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
 	}
@@ -588,7 +588,7 @@ body{
 		font-size: 1.8rem;
 		text-align: center;
 		animation-name: chb;
-		animation-duration: 3s;
+		animation-duration: 1.2s;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
 	}
@@ -690,7 +690,7 @@ body{
 		font-size: 3.1rem;
 		text-align: center;
 		animation-name: chb;
-		animation-duration: 3s;
+		animation-duration: 1.2s;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
 	}
@@ -791,7 +791,7 @@ body{
 		font-size: 5.25rem;
 		text-align: center;
 		animation-name: chb;
-		animation-duration: 3s;
+		animation-duration: 1.2s;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
 	}
