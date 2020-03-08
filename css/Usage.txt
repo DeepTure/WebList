@@ -1,0 +1,125 @@
+---------------------------------------------
+Base para cualquier pagina:
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/CSS/Resp.css">
+	<link rel="shortcut icon" href="/img/DeepTureLogo.ico" />
+	<title>WebList</title>
+	<style type="text/css">
+		.bg-img{
+			margin: 0;
+			background-image: url('/img/BatizBlur.jpg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+	</style>
+</head>
+<body link="Black" vlink="Black" alink="Black" class="bg-img">
+	<nav>
+		<div class="title">
+			Hola!
+			<p class="atxt">
+				Este es el menu
+			</p>
+		</div>
+	</nav>
+	<div class="block">
+		<p class="title">
+			Pagina de prueba
+		</p>
+	</div>
+</body>
+</html>
+---------------------------------------------
+
+Querido lector :v, si decides cambiar el estilo de alguno de esos componentes,
+agregalos y adaptalos en Resp.css para que sean resposivos, yo recomendaria 
+en su lugar usar style="" en el componente a modificar y usar alguna de estas clases
+
+
+Para titulos utilizar:
+class="title"
+
+Para subtitulos utilizar:
+class="subtitle"
+
+Para cualquier otro texto:
+class="atxt"
+
+. . . . . . . . . . . . . . . . . . . . . . .
+Para insertar br dinamicos:
+<p class="space">
+	<br>
+</p>
+
+ó
+
+<div class="space">
+	<br>
+</div>
+. . . . . . . . . . . . . . . . . . . . . . .
+
+Campos de texto (formulario):
+class="inputtxt"
+
+Botones (formulario):
+class="inputbutn"
+
+Botones animados (formulario):
+class="inputbutn int"
+
+- - - - - - - - - - - - - - - - - - - - - - -
+Botones grandes (etiqueta a):
+<a href="">
+	<aside>
+		<div class="space">
+			<br>
+		</div>
+		<img src="../img/Image.png" class="Imgico">
+		<br>
+		<p class="atxt">
+			Ayuda
+		</p>
+	</aside>
+</a>
+
+Botones pequeños (etiqueta a):
+<a href="">
+	<aside class="asidMin">
+		<img src="img/Image.png" class="ImgicoMin">
+	</aside>
+</a>
+
+Los botones grandes de etiqueta pueden o no llevar texto, pero si obligatoriamente una imagen
+Si se requiere utilizar una imagen, la resolucion debera ser minimo de 2000x2000 px o mayor
+conservando el radio de aspecto y sin fondo en formato png, me las pueden pedir si la necesitan :v
+
+Los botones pequeños no deben llevar texto solo imagen
+- - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+---------------------------------------------
+Escala de aspecto de texto:
+
+A = Letra de tamaño t de la forma (a.a rem) mas grande que quepa en una sola linea en el menu
+
+Titulo - A
+
+X = (A/2)+(A/5)
+
+Subtitulo, a link, .space - X
+
+Y = (A/2)+(A/8)
+
+Campos de texto y botones - Y
+
+---------------------------------------------
+
+Algun dia tendra modo oscuro >:"v
