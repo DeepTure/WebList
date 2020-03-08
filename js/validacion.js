@@ -6,5 +6,9 @@ function validar() {
         alert("Hola "+usuario)
     }else{
         alert("No reconocido 'version de prueba'")
-    }
+        //quitaremos el alert y pondremos el codigo para checar cuentas de usarios normales con otro if
+        //al final estara el else...
+    }/*else{
+        alert("No reconocido 'version de prueba'")
+    }*/
 }
