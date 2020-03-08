@@ -18,6 +18,6 @@ function validar() {
     }else if(usuario=="Leo_Yeudiel" && contraseña=="PiñaDT05"){
         alert("Hola "+usuario)
     }else{
-        alert("no reconocido 'version de prueba'")
+        alert("No reconocido 'version de prueba'")
     }
 }
