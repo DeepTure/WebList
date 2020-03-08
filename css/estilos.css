@@ -116,12 +116,13 @@ aside{
 	}
 }
 .ayuda{
-	text-align: right;
+	.ayuda{
+	text-align: left;
 	display: inline-block;
 	position: absolute;
-	padding-top: 40rem; 
-	padding-bottom: 15rem;
-	width: 73%;
-	height: 89%; 
+	padding-top: 20rem; 
+	padding-bottom: 20rem;
+	width: 215rem;
+	height: 215rem; 
 	
 }
