@@ -84,7 +84,7 @@ Botones grandes (etiqueta a):
 		<img src="../img/Image.png" class="Imgico">
 		<br>
 		<p class="atxt">
-			Ayuda
+			Boton
 		</p>
 	</aside>
 </a>
