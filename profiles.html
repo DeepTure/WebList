@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="CSS/Resp.css">
+	<link rel="shortcut icon" href="img/DeepTureLogo.ico" />
+	<title>WebList</title>
+	<style type="text/css">
+		.bg-img{
+			margin: 0;
+			background-image: url('img/Background.jpg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+		.fg-img{
+			background-image: url('img/Foreground.jpg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+	</style>
+	<script type="text/javascript" src="JS/Validate.js"></script>
+</head>
+<body link="Black" vlink="Black" alink="Black" class="bg-img">
+	<nav>
+        <img src="img/DeepTureLogo.png" class="ImgicoLog">
+        <div class="space">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <p class="btaling">
+            <input type="button" name="Volver" value="Menu Principal" class="inputbutn int" onclick="location.href='index.html'">
+        </p>
+	</nav>
+	<div class="block start fg-img">
+		<div class="space">
+			<br><br><br>
+		</div>
+		<div class="title" style="text-align: left; margin-left: 1.5rem;">
+			Cambiar contraseña
+		</div>
+		<div class="space">
+			<br>
+		</div>
+		<div>
+			<form method="post" id="LogIn" style="text-align: left;">
+				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+					Nueva contraseña
+				</p>
+				<div class="space">
+					<br>
+				</div>
+				<input type="text" id="Account" class="inputtxt" style="margin-left: 1.5rem;">
+				<div class="space">
+					<br>
+				</div>
+				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+					Confirmar contraseña
+				</p>
+				<div class="space">
+					<br>
+				</div>
+				<input type="password" id="Password" class="inputtxt" style="margin-left: 1.5rem;">
+				<div class="space">
+					<br>
+				</div>
+				<input type="button" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" onclick="Log_In()" style="margin-left: 1.5rem;">
+				<div class="space">
+                    <br>
+                    <br>
+                    <br>
+				</div>
+				<input type="button" id="Recover" value="Recuperar cuenta" class="inputbutn int" style="margin-left: 1.5rem;">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
