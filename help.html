@@ -24,6 +24,7 @@
 			background-size: cover;
 		}
 	</style>
+	<script type="text/javascript" src="JS/Validate.js"></script>
 </head>
 <body link="Black" vlink="Black" alink="Black" class="bg-img">
 	<nav>
@@ -36,7 +37,7 @@
 		</div>
 		
 		<div>
-			<form method="post" name="Login">
+			<form method="post" id="LogIn">
 				<p class="subtitle">
 					Usuario
 				</p>
@@ -64,7 +65,7 @@
 					<br>
 				</div>
 				<p class="btaling">
-					<input type="button" name="Log" value="Inicia sesi&oacute;n" class="inputbutn int">
+					<input type="button" name="Log" value="Inicia sesi&oacute;n" class="inputbutn int" onclick="Log_In()">
 				</p>
 				<div class="space">
 					<br>
