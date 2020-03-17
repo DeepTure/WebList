@@ -19,21 +19,29 @@ function Log_In() {
 function changePassword() {
     let pass1 = document.getElementById("password").pass1.value
     let pass2 = document.getElementById("password").pass2.value
+    let fuerza=0;
     if(pass1!=pass2 || pass1==null || pass2==null || pass1=="" || pass2==""){
         alert("Las contraseñas no coinciden")
     }else{
         if(pass1.lenght>=8){
             alert("el texto es lo suficientemente largo")
+            fuerza+=1
         }if(patron_pw_may.test(pass1)){
             alert("el texto tiene almenos una mayuscula")
+            fuerza+=1
         }if(patron_pw_min.test(pass1)){
             alert("el texto tiene almenos una minuscula")
+            fuerza+=1
         }if(patron_pw_num.test(pass1)){
             alert("el texto tiene almenos un numero")
+            fuerza+=1
         }if(patron_pw_sib.test(pass1)){
             alert("el texto tiene almenos un simbolo")
+            fuerza+=1
         }if(patron_pw_val_car.test(pass1)){
             alert("el texto tiene caracteres validos")
+            fuerza+=1
         }
+        alert("Tu contraseña tiene una fuerza de nivel: "+fuerza)
     }
 }
