@@ -29,7 +29,6 @@
 <body link="Black" vlink="Black" alink="Black" class="bg-img">
 	<nav>
 		Mi Perfil
-        <img src="img/DeepTureLogo.png" class="ImgicoLog">
 
         <div class="space">
             <br>
@@ -43,10 +42,28 @@
             <br>
             <br>
             <br>
+			<br>
+			<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+			<br>
+			<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
         </div>
         <p class="btaling">
-            <input type="button" name="Volver" value="Menu Principal" class="inputbutn int" onclick="location.href='start.html'">
+            <input type="button" name="Volver" value="Volver" class="inputbutn int" onclick="location.href='start.html'">
         </p>
 	</nav>
 	<div class="block start fg-img">
@@ -59,15 +76,21 @@
 		<div class="space">
 			<br>
 		</div>
+		<div class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+			Usar al menos 8 caracteres entre mayusculas y minusculas con al menos 1 numero
+		</div>
+		<div class="space">
+			<br>
+		</div>
 		<div>
-			<form method="post" id="LogIn" style="text-align: left;">
+			<form method="post" id="password" style="text-align: left;">
 				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
 					Nueva contraseña
 				</p>
 				<div class="space">
 					<br>
 				</div>
-				<input type="text" id="Account" class="inputtxt" style="margin-left: 1.5rem;">
+				<input type="text" id="pass1" class="inputtxt" style="margin-left: 1.5rem;">
 				<div class="space">
 					<br>
 				</div>
@@ -77,11 +100,11 @@
 				<div class="space">
 					<br>
 				</div>
-				<input type="password" id="Password" class="inputtxt" style="margin-left: 1.5rem;">
+				<input type="text" id="pass2" class="inputtxt" style="margin-left: 1.5rem;">
 				<div class="space">
 					<br>
 				</div>
-				<input type="button" id="Login" value="Enviar" class="inputbutn int" onclick="Log_In()" style="margin-left: 1.5rem;">
+				<input type="button" id="Login" value="Enviar" class="inputbutn int" onclick="changePassword()" style="margin-left: 1.5rem;">
 				<div class="space">
                     <br>
                     <br>
