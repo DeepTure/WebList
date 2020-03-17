@@ -1,0 +1,45 @@
+body{
+  margin: 0;
+  background: url(../img/Background.jpg);
+  background-size: 100% 1000px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-attachment: fixed;
+}
+form,div,aside,article,nav{
+	background-color: #FFFFFF;
+}
+.grupos{
+	display: inline-block;
+	position: relative;
+	width: 420px;
+	height: 500px;
+}
+.navegador{
+	display: inline-block;
+	width: 500px;
+	height: 850px;
+}
+.listas{
+	width: 800px;
+	height: 830px;
+	position: relative;
+	display: inline-block;
+	left: 70px;
+	bottom: 120px;
+}
+.pdf{
+	display: inline-block;
+	position: relative;
+	width: 700px;
+	height: 275px;
+}
+.impresiones{
+	display: inline-block;
+	position: relative;
+	width: 725px;
+	height: 300px;
+}
+.interacciones{
+
+}

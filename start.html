@@ -11,12 +11,13 @@
 
 		}
 	</style>
+	<link rel="stylesheet" type="text/css" href="CSS/styleStart.css">
 </head>
 <body>
 
-	<nav name="grupos">
+	<nav name="grupos" class="navegador">
 		<h2>Bienvenido</h2>
-		<div>
+		<div class="grupos">
 			<h2>Tus grupos</h2>
 			<!-- lista donde aparecen todos los gripos del profesor-->
 			<ul>
@@ -36,41 +37,43 @@
 
 <!-- division entre articulos -->
 
-	<form name="acciones" action="#">
-		<div>
+	<form name="acciones" action="#" class="listas">
+		<article class="pdf">
 			<!--aqui es donde aparecerán los pedef de horarios del grupo
 				dejarle un buen espacio para que puedan verse con comodida
 			-->
 			<h1>PDF'S DE GRUPOS</h1>
 
-		</div>
+		</article>
 
-		<!--botones para borrar o configurar las listas-->
-		<input type="button" name="delete" value="Borrar">
-		<input type="button" name="save" value="Save">
+		<aside class="interacciones">
+			<!--botones para borrar o configurar las listas-->
+			<input type="button" name="delete" value="Borrar" id="btn">
+			<input type="button" name="save" value="Save" id="btn">
 
-		<!-- aqwui el usuario selecciona el semestre en el que imparte clase-->
-		<label>Selecciona el semestre</label>
-		
-		<input type="radio" name="unidad" onchange="camb1()">Segundo semestre
-		<input type="radio" name="unidad" value="2do" onchange="camb2()">Cuarto semestre
-		<input type="radio" name="unidad" value="3er" onchange="camb3()">Sexto semestre
-		
-		<!-- las materias aparecen aqui automaticamente segun el semestre seleccionado-->
-		<label>Unidades de aprendizaje</label>
-		<select name="opt" >
-			<option value="m1">_
-		</select>
+			<!-- aqwui el usuario selecciona el semestre en el que imparte clase-->
+			<label>Selecciona el semestre<br></label>
+			
+			<input type="radio" name="unidad" onchange="camb1()">Segundo semestre
+			<input type="radio" name="unidad" value="2do" onchange="camb2()">Cuarto semestre
+			<input type="radio" name="unidad" value="3er" onchange="camb3()">Sexto semestre
+			
+			<!-- las materias aparecen aqui automaticamente segun el semestre seleccionado-->
+			<label>Unidades de aprendizaje</label>
+			<select name="opt" >
+				<option value="m1">_
+			</select>
+		</aside>
 
+			<aside name="lista" class="impresiones">
+				<h1>Listas</h1>
+			</aside>
 	</form>
 
 	<!-- aqui apareceran las listas de los profesores
 		°se extraera los nombres de cada alumno de la base de datos y luego se ordenaran en lista en este lugar
 		°el maestro seleccionara si vinieron atraves de un checkbutton y luego seleccionará una se las opciones que esán en el div superiror
 	-->
-	<div name="lista">
-		<h1>Listas</h1>
-	</div>
 
 	<script type="text/javascript">
 		//definimos los arreglos de las materias
