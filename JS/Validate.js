@@ -2,8 +2,8 @@
 var patron_pw_min=/[a-z]+/
 var patron_pw_may=/[A-Z]+/
 var patron_pw_num=/[0-9]+/
-var patron_pw_sib=/[#$%&°¬]+/
-var patron_pw_val_car=/[A-Za-z0-9#$%&°¬]+/
+var patron_pw_sib=/[\W]+/
+var patron_pw_inval_car=/[\s]+/
 //No copiar marca registrada MarckDJ©
 
 function Log_In() {
@@ -23,23 +23,34 @@ function changePassword() {
     if(pass1!=pass2 || pass1==null || pass2==null || pass1=="" || pass2==""){
         alert("Las contraseñas no coinciden")
     }else{
-        if(pass1.lenght>=8){
-            alert("el texto es lo suficientemente largo")
+        if(pass1.length<8){
+            alert("el texto no es lo suficientemente largo")
+        }else{
             fuerza+=1
-        }if(patron_pw_may.test(pass1)){
-            alert("el texto tiene almenos una mayuscula")
+        }
+        if(!patron_pw_may.test(pass1)){
+            alert("el texto no tiene almenos una mayuscula")
+        }else{
             fuerza+=1
-        }if(patron_pw_min.test(pass1)){
-            alert("el texto tiene almenos una minuscula")
+        }
+        if(!patron_pw_min.test(pass1)){
+            alert("el texto no tiene almenos una minuscula")
+        }else{
             fuerza+=1
-        }if(patron_pw_num.test(pass1)){
-            alert("el texto tiene almenos un numero")
+        }
+        if(!patron_pw_num.test(pass1)){
+            alert("el texto no tiene almenos un numero")
+        }else{
             fuerza+=1
-        }if(patron_pw_sib.test(pass1)){
-            alert("el texto tiene almenos un simbolo")
+        }
+        if(!patron_pw_sib.test(pass1)){
+            alert("el texto no tiene almenos un simbolo")
+        }else{
             fuerza+=1
-        }if(patron_pw_val_car.test(pass1)){
-            alert("el texto tiene caracteres validos")
+        }
+        if(patron_pw_inval_car.test(pass1)){
+            alert("el texto no tiene caracteres validos")
+        }else{
             fuerza+=1
         }
         alert("Tu contraseña tiene una fuerza de nivel: "+fuerza)
