@@ -4,6 +4,7 @@ var patron_pw_may=/[A-Z]+/
 var patron_pw_num=/[0-9]+/
 var patron_pw_sib=/[\W]+/
 var patron_pw_inval_car=/[\s]+/
+var patron_email=/^[^\s"{}""[]""()"]+/
 //No copiar marca registrada MarckDJ©
 
 function Log_In() {
@@ -51,5 +52,14 @@ function changePassword() {
             fuerza+=1
         }
         alert("Tu contraseña tiene una fuerza de nivel: "+fuerza)
+    }
+}
+
+function verEmail() {
+    let email = document.getElementById("password").email.value
+    if(patron_email.test(email)){
+        alert("Bien")
+    }else{
+        alert("mal")
     }
 }
