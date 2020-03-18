@@ -22,6 +22,8 @@ function changePassword() {
     let fuerza=0;
     if(pass1!=pass2 || pass1==null || pass2==null || pass1=="" || pass2==""){
         alert("Las contraseñas no coinciden")
+    }else if(patron_pw_inval_car.test(pass1)){
+        alert("la contraseña tiene caracteres no validos")
     }else{
         if(pass1.length<8){
             alert("el texto no es lo suficientemente largo")
@@ -45,11 +47,6 @@ function changePassword() {
         }
         if(!patron_pw_sib.test(pass1)){
             alert("el texto no tiene almenos un simbolo")
-        }else{
-            fuerza+=1
-        }
-        if(patron_pw_inval_car.test(pass1)){
-            alert("el texto no tiene caracteres validos")
         }else{
             fuerza+=1
         }
