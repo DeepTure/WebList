@@ -1,119 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="CSS/Resp.css">
+	<link rel="shortcut icon" href="img/DeepTureLogo.ico" />
 	<title>WebList</title>
 	<style type="text/css">
-		nav, section, footer, article, aside, form, div{
-			border: 2px solid #191919;
-			margin: 1rem;
-			border-radius: 10px;
-			padding: 1rem; 
-
+		.bg-img{
+			margin: 0;
+			background-image: url('img/Background.jpg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+		.fg-img{
+			background-image: url('img/Foreground.jpg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-attachment: fixed;
+			background-size: cover;
 		}
 	</style>
-	<link rel="stylesheet" type="text/css" href="CSS/styleStart.css">
 </head>
-<body>
+<body link="Black" vlink="Black" alink="Black" class="bg-img">
+	<nav>
+		<p class="title">
+			Bienvenido
+		</p>
+		<p class="space">
+			<br>
+			<br>
+			<br>
+		</p>
+		<p class="subtitle">
+			Tus grupos
+		</p>
+		<p class="space">
+			<br>
+			<hr>
+			<br>
+		</p>
+		<div class="atxt">
+			<a href="#">
+				4IV7
+			</a>
 
-	<nav name="grupos" class="navegador">
-		<h2>Bienvenido</h2>
-		<div class="grupos">
-			<h2>Tus grupos</h2>
-			<!-- lista donde aparecen todos los gripos del profesor-->
-			<ul>
-				<li><a href="#">4IV7</a></li>
-				<li><a href="#">4IV8</a></li>
-				<li><a href="#">4IV9</a></li>
-				<li><a href="#">2IM10</a></li>
-				<li><a href="#">1IV12</a></li>
-				<li><a href="#">3IM6</a></li>
-			</ul>
+			<p class="space">
+				<br>
+			</p>
+
+			<a href="#">
+				4IV8
+			</a>
+
+			<p class="space">
+				<br>
+			</p>
+			
+			<a href="#">
+				4IV9
+			</a>
+
+			<p class="space">
+				<br>
+			</p>
+			
+			<a href="#">
+				2IM10
+			</a>
+
+			<p class="space">
+				<br>
+			</p>
+			
+			<a href="#">
+				1IV12
+			</a>
+			
+			<p class="space">
+				<br>
+			</p>
+
+			<a href="#">
+				3IM6
+			</a>
 		</div>
 
 		<!-- botones para salir de tu cuenta y para configurara tu cuneta-->
-		<input type="button" name="Logout" value="Log Out" onclick="location.href='index.html'">
-		<input type="button" name="Perfil" value="perfil" onclick="location.href='profiles.html'">
+		<div style="margin-top: 160%;">
+			<input type="button" name="Perfil" value="Perfil" onclick="location.href='profiles.html'" class="inputbutn int">
+			<p class="space">
+				<br>
+			</p>
+			<input type="button" name="LogOut" value="Cerrar sesión" onclick="location.href='index.html'" class="inputbutn int">
+		</div>
+
 	</nav>
-
-<!-- division entre articulos -->
-
-	<form name="acciones" action="#" class="listas">
-		<article class="pdf">
-			<!--aqui es donde aparecerán los pedef de horarios del grupo
-				dejarle un buen espacio para que puedan verse con comodida
-			-->
-			<h1>PDF'S DE GRUPOS</h1>
-
-		</article>
-
-		<aside class="interacciones">
-			<!--botones para borrar o configurar las listas-->
-			<input type="button" name="delete" value="Borrar" id="btn">
-			<input type="button" name="save" value="Save" id="btn">
-
-			<!-- aqwui el usuario selecciona el semestre en el que imparte clase-->
-			<label>Selecciona el semestre<br></label>
-			
-			<input type="radio" name="unidad" onchange="camb1()">Segundo semestre
-			<input type="radio" name="unidad" value="2do" onchange="camb2()">Cuarto semestre
-			<input type="radio" name="unidad" value="3er" onchange="camb3()">Sexto semestre
-			
-			<!-- las materias aparecen aqui automaticamente segun el semestre seleccionado-->
-			<label>Unidades de aprendizaje</label>
-			<select name="opt" >
-				<option value="m1">_
-			</select>
-		</aside>
-
-			<aside name="lista" class="impresiones">
-				<h1>Listas</h1>
-			</aside>
-	</form>
-
-	<!-- aqui apareceran las listas de los profesores
-		°se extraera los nombres de cada alumno de la base de datos y luego se ordenaran en lista en este lugar
-		°el maestro seleccionara si vinieron atraves de un checkbutton y luego seleccionará una se las opciones que esán en el div superiror
-	-->
-
-	<script type="text/javascript">
-		//definimos los arreglos de las materias
-			var mat1= new Array ("Geometria y Tri...", "Filosofia II", "Computacion basi...", "ingles II", "expresion oral...", "biologia basica", "historia de mex...","orientacion juvenil...","tic's");
-
-			var mat2 =new Array ("Calculo diferencial","Fisica II","Quimica II","ingles IV","Dibujo tecnico II","PWS","Bases de datos","LPTI II","TPPCC");
-
-			var mat3 = new Array ("Probabilidad y est...","Fisica IV","Quimica IV","Ingles IV","orientacion juvenil...","Metodos agiles...","Soporte de software","Ingenieria de soft...","LPTI IV","Proyecto integrador");
-
-			//funciones que hacn dinamica la lista
-		function camb1(){
-			//obtenermos el tamaño total del arreglo
-			opc=mat1.length;
-			//ponemos el tamaño del arreglo en el select
-			document.acciones.opt.length = opc;
-			for(var i=0;i<opc;i++){
-				//metemos una por una cada materia a el select
-				document.acciones.opt.options[i].text=mat1[i];
-				//metemeos elnombtre de la materia como valor del select
-				document.acciones.opt.options[i].value=mat1[i];
-			}
-		}
-		//los mismo se repite en todas las funciones
-		function camb2(){
-			opc=mat2.length;
-			document.acciones.opt.length = opc;
-			for(var i=0;i<opc;i++){
-				document.acciones.opt.options[i].text=mat2[i];
-				document.acciones.opt.options[i].value=mat2[i];
-			}
-		}
-		function camb3(){
-			opc=mat3.length;
-			document.acciones.opt.length = opc;
-			for(var i=0;i<opc;i++){
-				document.acciones.opt.options[i].text=mat3[i];
-				document.acciones.opt.options[i].value=mat3[i];
-			}
-		}
-	</script>
-
+	<iframe src="StartInfo.html" class="blockAn fg-img" style="border: none;"></iframe>
 </body>
 </html>
