@@ -16,7 +16,7 @@ Añadir a la pagina:
 	}
 
 2:
-Al div principal cambiarle la clase a: class="block fg-img" ; y añadir hasta arriba (primera linea despues del div principal):
+Al div principal cambiarle la clase a: class="blockAn fg-img" ; y añadir hasta arriba (primera linea despues del div principal):
 
 	<p class="space">
 		<br>
@@ -59,7 +59,7 @@ Base para cualquier pagina:
 	<nav>
 		
 	</nav>
-	<div class="block fg-img">
+	<div class="blockAn fg-img">
 		<p class="space">
 			<br>
 			<!--No quitar el br dinamico-->
