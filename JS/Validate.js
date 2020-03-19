@@ -4,7 +4,7 @@ var patron_pw_may=/[A-Z]+/
 var patron_pw_num=/[0-9]+/
 var patron_pw_sib=/[\W]+/
 var patron_pw_inval_car=/[\s]+/
-var patron_email=/^[\W["()"]]+/
+var patron_email=/^[\w+.]+@{1}[a-z]+[.]{1}com|web|org{1}$/
 //No copiar marca registrada MarckDJ©
 
 function Log_In() {
@@ -60,6 +60,6 @@ function verEmail() {
     if(patron_email.test(email)){
         alert("Bien")
     }else{
-        alert("mal")
+        alert("Correo electronico no reconocido")
     }
 }
