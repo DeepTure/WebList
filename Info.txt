@@ -1,0 +1,58 @@
+Nuevo folder: WebList
+Renombrado:
+	help.html a Help.html
+	helptexto.html a HelperText.html
+	index.html a Index.html
+	profiles.html a MyProfile.html
+	start.html a Home.html
+	StartInfo.html a HomeList.html
+	/img a /Img
+
+Movimientos:
+	/HelperText.html a /WebList/HelperText.html
+	/HomeList.html a /WebList/HomeList.html
+
+Eliminado:
+	/CSS/Single.css
+	
+Creado:
+	/Recover.html
+
+Cambios en codigo:
+	Index.html
+		Se cambiaron referencias
+	Help.html
+		Se cambiaron referencias
+		Se elimino etiqueta extra: </html>
+		Se elimino etiqueta extra: </body>
+		Se elimino etiqueta extra: </div>
+		Se elimino etiqueta extra: </div>
+		Se elimino clase obsoleta: class="btaling"
+		Se elimino clase obsoleta: class="btaling"
+		Se elimino clase obsoleta: class="btaling"
+		Se elimino clase obsoleta: class="block start" y se cambio por: class="blockAn fg-img"
+	MyProfile.html
+		Se cambiaron referencias
+		Se elimino clase obsoleta: class="btaling"
+		Se elimino clase obsoleta: class="block start fg-img" y se cambio por: class="blockAn fg-img"
+	Home.html
+		Se cambiaron referencias
+	HomeList.html
+		Se cambiaron referencias
+		Se quitaron clases innecesarias
+	HelperText.html
+		Se cambiaron referencias
+		
+		Se agrego: <p class="space"><br><!--No quitar el br dinamico--></p>
+
+		Se elimino estilo: .perdida{ text-shadow: 2px 2px 2px rgb(0, 0, 0); }, 
+		ya que las sombras no fueron agregadas y adaptadas en Resp.css como lo dice Usage.txt, 
+		esto provocaba que se hicieran mas grandes o pequeñas segun la pantalla y no conservaran un tamaño similar
+		Se elimino estilo: style="resize: none;"		
+
+		Se elimino etiqueta extra: <div class="fg-img">
+		Se elimino etiqueta extra: </div>
+		Se elimino etiqueta extra: <p class="atxt">
+		Se elimino etiqueta extra: </p>
+		Se agrego: <p class="space"><br></p>
+		
