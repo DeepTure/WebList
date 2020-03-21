@@ -27,27 +27,22 @@ function changePassword() {
         alert("la contraseña tiene caracteres no validos")
     }else{
         if(pass1.length<8){
-            alert("el texto no es lo suficientemente largo")
         }else{
             fuerza+=1
         }
         if(!patron_pw_may.test(pass1)){
-            alert("el texto no tiene almenos una mayuscula")
         }else{
             fuerza+=1
         }
         if(!patron_pw_min.test(pass1)){
-            alert("el texto no tiene almenos una minuscula")
         }else{
             fuerza+=1
         }
         if(!patron_pw_num.test(pass1)){
-            alert("el texto no tiene almenos un numero")
         }else{
             fuerza+=1
         }
         if(!patron_pw_sib.test(pass1)){
-            alert("el texto no tiene almenos un simbolo")
         }else{
             fuerza+=1
         }
