@@ -4,7 +4,7 @@ var patron_pw_may=/[A-Z]+/
 var patron_pw_num=/[0-9]+/
 var patron_pw_sib=/[\W]+/
 var patron_pw_inval_car=/[\s]+/
-var patron_email=/^(^[\w+.]+@{1}[a-z]+(([.](com|web|org|gob)){1}([.](jp|es|mx))?){1}$){1}/
+var patron_email=/^(^[\w+.]+@{1}[a-z]+(([.](com|web|org|gob|ipn)){1}([.](jp|es|mx))?){1}$){1}/
 //No copiar marca registrada MarckDJ©
 
 function Log_In() {
