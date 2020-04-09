@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="CSS/Resp.css">
+	<link rel="shortcut icon" href="Img/DeepTureLogo.ico" />
+	<title>WebList</title>
+	<style type="text/css">
+		.bg-img{
+			margin: 0;
+			background-image: url('Img/Background.jpg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+		.fg-img{
+			background-image: url('Img/Foreground.jpg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+	</style>
+	<script type="text/javascript" src="JS/Validate.js"></script>
+</head>
+<body link="Black" vlink="Black" alink="Black" class="bg-img">
+	<nav>
+		<img src="Img/DeepTureLogo.png" class="ImgicoLog">
+	</nav>
+	<div class="block start fg-img">
+		<div class="space">
+			<br>
+		</div>
+		<a href="Help.html" class="InitHelp">
+			<aside>
+				<div class="space">
+					<br>
+				</div>
+				<img src="Img/Help.png" class="Imgico">
+				<br>
+				<p class="atxt">
+					Ayuda
+				</p>
+			</aside>
+		</a>
+		<div class="title">
+			Iniciar sesi&oacute;n
+		</div>
+		<div class="space">
+			<br>
+		</div>
+		<div>
+			<form method="post" id="LogIn">
+				<p class="subtitle">
+					Usuario
+				</p>
+				<div class="space">
+					<br>
+				</div>
+				<input type="text" id="Account" class="inputtxt">
+				<div class="space">
+					<br>
+					<br>
+					<br>
+				</div>
+				<p class="subtitle">
+					Contrase&ntilde;a
+				</p>
+				<div class="space">
+					<br>
+				</div>
+				<input type="password" id="Password" class="inputtxt">
+				<div class="space">
+					<br>
+					<br>
+					<br>
+					<br>
+				</div>
+				<input type="button" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" onclick="Log_In()">
+				<div class="space">
+					<br>
+				</div>
+				<input type="button" id="Recover" value="Recuperar cuenta" class="inputbutn int" onclick="location.href='Recover.html'">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
