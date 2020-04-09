@@ -2,7 +2,6 @@ Nuevo folder: WebList
 Renombrado:
 	help.html a Help.html
 	helptexto.html a HelperText.html
-	index.html a Index.html
 	profiles.html a MyProfile.html
 	start.html a Home.html
 	StartInfo.html a HomeList.html
