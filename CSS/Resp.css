@@ -17,6 +17,11 @@ a{
 	width: 15%;
 }
 
+.inputbutn.nav:hover{
+	background: white;
+	width: 100%;
+}
+
 /* Portrait devices */
 nav{
 	background-color: rgb(36, 25, 25);
@@ -143,7 +148,6 @@ aside{
 		text-align: center;
 		transition: background 1.2s, color 1.2s;
 	}
-
 	.blockAn{
 		display: inline-block;
 		position: absolute;
