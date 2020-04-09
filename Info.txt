@@ -3,16 +3,13 @@ Renombrado:
 	help.html a Help.html
 	profiles.html a MyProfile.html
 	start.html a Home.html
-	StartInfo.html a HomeList.html
+	StartInfo.html a HomeList.html - Ya no existe
 	/img a /Img
-
-Movimientos:
-	/HelperText.html a /WebList/HelperText.html
-	/HomeList.html a /WebList/HomeList.html
 
 Eliminado:
 	/CSS/Single.css
 	/WebList/HelperText.html
+	/WebList/HomeList.html
 	
 Creado:
 	/Recover.html
@@ -37,7 +34,5 @@ Cambios en codigo:
 		Se elimino clase obsoleta: class="block start fg-img" y se cambio por: class="blockAn fg-img"
 	Home.html
 		Se cambiaron referencias
-	HomeList.html
-		Se cambiaron referencias
-		Se quitaron clases innecesarias
+		Se agrego HomeList
 		
