@@ -135,43 +135,11 @@ conservando el radio de aspecto y sin fondo en formato png, me las pueden pedir 
 Los botones pequeños no deben llevar texto solo imagen
 - - - - - - - - - - - - - - - - - - - - - - -
 
+Paginas con scroll:
 
-Estructura para paginas con scroll:
-Se utilizan 2 paginas
+Agregar al div principal (Probablemente ahi sera donde se necesite):
 
-La pagina principal y la pagina que sustituira a <div class="block">
-
-Para colocar la segunda pagina, se eliminara:
-
-<div class="block">
-
-</div>
-
-Y se sustituira con:
-
-<iframe src="page.html" class="block" style="border:none;"></iframe>
-
-La estructura de "page.html" debe ser:
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="Resp.css">
-	<link rel="shortcut icon" href="DeepTureLogo.ico" />
-	<title>WebList</title>
-</head>
-<body link="Black" vlink="Black" alink="Black">
-    <p class="space">
-		<br>
-		<!--No quitar el br dinamico-->
-	</p>
-
-</body>
-</html>
-
---Importante--
-Es iframe no frame, frame ya no es soportado por HTML5
+style="overflow: auto"
 
 ---------------------------------------------
 Escala de aspecto de texto:
