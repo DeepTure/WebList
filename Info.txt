@@ -1,7 +1,6 @@
 Nuevo folder: WebList
 Renombrado:
 	help.html a Help.html
-	helptexto.html a HelperText.html
 	profiles.html a MyProfile.html
 	start.html a Home.html
 	StartInfo.html a HomeList.html
@@ -13,6 +12,7 @@ Movimientos:
 
 Eliminado:
 	/CSS/Single.css
+	/WebList/HelperText.html
 	
 Creado:
 	/Recover.html
@@ -30,6 +30,7 @@ Cambios en codigo:
 		Se elimino clase obsoleta: class="btaling"
 		Se elimino clase obsoleta: class="btaling"
 		Se elimino clase obsoleta: class="block start" y se cambio por: class="blockAn fg-img"
+		Se modifico el display de informacion para eliminar su dependencia con helperText.html
 	MyProfile.html
 		Se cambiaron referencias
 		Se elimino clase obsoleta: class="btaling"
