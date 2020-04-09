@@ -40,19 +40,4 @@ Cambios en codigo:
 	HomeList.html
 		Se cambiaron referencias
 		Se quitaron clases innecesarias
-	HelperText.html
-		Se cambiaron referencias
-		
-		Se agrego: <p class="space"><br><!--No quitar el br dinamico--></p>
-
-		Se elimino estilo: .perdida{ text-shadow: 2px 2px 2px rgb(0, 0, 0); }, 
-		ya que las sombras no fueron agregadas y adaptadas en Resp.css como lo dice Usage.txt, 
-		esto provocaba que se hicieran mas grandes o pequeñas segun la pantalla y no conservaran un tamaño similar
-		Se elimino estilo: style="resize: none;"		
-
-		Se elimino etiqueta extra: <div class="fg-img">
-		Se elimino etiqueta extra: </div>
-		Se elimino etiqueta extra: <p class="atxt">
-		Se elimino etiqueta extra: </p>
-		Se agrego: <p class="space"><br></p>
 		
