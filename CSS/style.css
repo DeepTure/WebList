@@ -1,16 +1,16 @@
 /* Hoja de estilo para paginas externas*/
 
-*{
-	padding: 0;
-	margin: 0;
-	font-family: Arial;
-	color: #FFF;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial;
+  color: #fff;
 }
 
-a{
-	text-decoration: none;
+a {
+  text-decoration: none;
 }
 
-body{
-	background-color: black;
+body {
+  background-color: black;
 }
