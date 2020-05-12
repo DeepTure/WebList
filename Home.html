@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="CSS/Resp.css">
+	<title>
+		WebList
+	</title>
 	<link rel="shortcut icon" href="Img/DeepTureLogo.ico" />
-	<title>WebList</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: no-preference)" href="CSS/RespL.css">
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: no-preference)" href="CSS/FuenteL.css">
+
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: dark)" href="CSS/RespD.css">
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: light)" href="CSS/RespL.css">
+
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: dark)" href="CSS/FuenteD.css">
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: light)" href="CSS/FuenteL.css">
+
 	<style type="text/css">
 		.bg-img{
 			margin: 0;
@@ -14,6 +24,7 @@
 			background-position: 0 0;
 			background-attachment: fixed;
 			background-size: cover;
+			transition: background 1s;
 		}
 		.fg-img{
 			background-image: url('Img/Foreground.jpg');
@@ -22,14 +33,44 @@
 			background-position: 0 0;
 			background-attachment: fixed;
 			background-size: cover;
+			transition: background 1s;
+		}
+
+		.logo{
+			background-image: url('Img/DeepTureLogo.png');
+			background-size: 100%;
+			background-size: cover;
+			transition: background 1s;
+		}
+
+		.logoHelp{
+			background-image: url('Img/Help.png');
+			background-size: 70%;
+			background-repeat: no-repeat;
+			background-position: 50% 0;
+			transition: background 1s;
+		}
+
+		@media screen and (prefers-color-scheme: light) {
+			.bg-img{
+				background-image: url('Img/BackgroundL.jpg');
+				transition: background 1s;
+			}
+			.fg-img{
+				background-image: url('Img/ForegroundL.png');
+				transition: background 1s;
+			}
+			.logo{
+				background-image: url('Img/DeepTureLogoL.png');
+				transition: background 1s;
+			}
+			.logoHelp{
+				background-image: url('Img/HelpD.png');
+				transition: background 1s;
+			}
 		}
 	</style>
-	<!-- aqui apareceran las listas de los profesores
-		°se extraera los nombres de cada alumno de la base de datos y luego se ordenaran en lista en este lugar
-		°el maestro seleccionara si vinieron atraves de un checkbutton y luego seleccionará una se las opciones que esán en el div superiror
-	-->
-
-	
+	<script src="JS/Validate.js"></script>
 </head>
 <body link="Black" vlink="Black" alink="Black" class="bg-img">
 
@@ -164,6 +205,10 @@
 		</form>
 	</div>
 
+	<!-- aqui apareceran las listas de los profesores
+		°se extraera los nombres de cada alumno de la base de datos y luego se ordenaran en lista en este lugar
+		°el maestro seleccionara si vinieron atraves de un checkbutton y luego seleccionará una se las opciones que esán en el div superiror
+	-->
 	<script type="text/javascript">
 		//definimos los arreglos de las materias
 			var mat1= new Array ("Geometria y Tri...", "Filosofia II", "Computacion basi...", "ingles II", "expresion oral...", "biologia basica", "historia de mex...","orientacion juvenil...","tic's");

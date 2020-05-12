@@ -1,88 +1,131 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="CSS/Resp.css" />
-    <link rel="shortcut icon" href="img/DeepTureLogo.ico" />
-    <title>WebList</title>
-    <style type="text/css">
-      .bg-img {
-        margin: 0;
-        background-image: url("Img/Background.jpg");
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        background-attachment: fixed;
-        background-size: cover;
-      }
+<head>
+	<title>
+		WebList
+	</title>
+	<link rel="shortcut icon" href="Img/DeepTureLogo.ico" />
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: no-preference)" href="CSS/RespL.css">
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: no-preference)" href="CSS/FuenteL.css">
 
-      .fg-img {
-        background-image: url("Img/Foreground.jpg");
-        background-size: 100%;
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        background-attachment: fixed;
-        background-size: cover;
-      }
-    </style>
-  </head>
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: dark)" href="CSS/RespD.css">
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: light)" href="CSS/RespL.css">
 
-  <body link="Black" vlink="Black" alink="Black" class="bg-img">
-    <nav>
-      <img src="Img/DeepTureLogo.png" class="ImgicoLog" />
-    </nav>
-    <div class="blockAn fg-img">
-      <p class="space">
-        <br />
-        <!--No quitar el br dinamico-->
-      </p>
-      <p class="title">
-        Recuperar cuenta
-      </p>
-      <p class="space">
-        <br />
-      </p>
-      <p class="atxt">
-        Para recuperar su contraseña llene los siguientes campos:
-      </p>
-      <p class="space">
-        <br />
-      </p>
-      <form method="post">
-        <p class="atxt">
-          Correo electronico:
-        </p>
-        <p class="space">
-          <br />
-        </p>
-        <input type="text" name="Mail" class="inputtxt" />
-        <p class="space">
-          <br />
-          <br />
-          <br />
-        </p>
-        <p class="atxt">
-          Número de empleado:
-        </p>
-        <p class="space">
-          <br />
-        </p>
-        <input type="text" name="ID" class="inputtxt" />
-        <p class="space">
-          <br />
-        </p>
-        <p class="space">
-          <br />
-        </p>
-        <input type="button" name="Send" class="inputbutn int" value="Enviar" />
-      </form>
-      <input
-        type="button"
-        class="inputbutn int"
-        value="Menú principal"
-        style="margin-top: 20%; margin-left: 80%;"
-        onclick="location.href='index.html'"
-      />
-    </div>
-  </body>
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: dark)" href="CSS/FuenteD.css">
+	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: light)" href="CSS/FuenteL.css">
+
+	<style type="text/css">
+		.bg-img{
+			margin: 0;
+			background-image: url('Img/Background.jpg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-attachment: fixed;
+			background-size: cover;
+			transition: background 1s;
+		}
+		.fg-img{
+			background-image: url('Img/Foreground.jpg');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+			background-attachment: fixed;
+			background-size: cover;
+			transition: background 1s;
+		}
+
+		.logo{
+			background-image: url('Img/DeepTureLogo.png');
+			background-size: 100%;
+			background-size: cover;
+			transition: background 1s;
+		}
+
+		.logoHelp{
+			background-image: url('Img/Help.png');
+			background-size: 70%;
+			background-repeat: no-repeat;
+			background-position: 50% 0;
+			transition: background 1s;
+		}
+
+		@media screen and (prefers-color-scheme: light) {
+			.bg-img{
+				background-image: url('Img/BackgroundL.jpg');
+				transition: background 1s;
+			}
+			.fg-img{
+				background-image: url('Img/ForegroundL.png');
+				transition: background 1s;
+			}
+			.logo{
+				background-image: url('Img/DeepTureLogoL.png');
+				transition: background 1s;
+			}
+			.logoHelp{
+				background-image: url('Img/HelpD.png');
+				transition: background 1s;
+			}
+		}
+	</style>
+	<script src="JS/Validate.js"></script>
+</head>
+<body link="Black" vlink="Black" alink="Black" class="bg-img">
+	
+	<nav>
+		<article class="ImgicoLog logo">
+			
+		</article>
+	</nav>
+	
+	<div class="blockAn fg-img">
+		<p class="space">
+			<br>
+			<!--No quitar el br dinamico-->
+		</p>
+		<p class="title">
+			Recuperar cuenta
+		</p>
+		<p class="space">
+			<br>
+		</p>
+		<p class="atxt">
+			Para recuperar su contraseña llene los siguientes campos: 
+		</p>
+		<p class="space">
+			<br>
+		</p>
+		<form method="post">
+			<p class="atxt">
+				Correo electronico:
+			</p>
+			<p class="space">
+				<br>
+			</p>
+			<input type="text" name="Mail" class="inputtxt">
+			<p class="space">
+				<br>
+				<br>
+				<br>
+			</p>
+			<p class="atxt">
+				Número de empleado:
+			</p>
+			<p class="space">
+				<br>
+			</p>
+			<input type="text" name="ID" class="inputtxt">
+			<p class="space">
+				<br>
+			</p>
+			<p class="space">
+				<br>
+			</p>
+			<input type="button" name="Send" class="inputbutn int" value="Enviar">
+		</form>
+		<input type="button" class="inputbutn int" value="Menú principal" style="margin-top: 20%; margin-left: 80%;" onclick="location.href='index.html'">
+	</div>
+</body>
 </html>
