@@ -1,4 +1,4 @@
-/* WebListInfinity Dark CSS */
+/* WebListProject BloodyMoon CSS */
 
 .inputbutn.int:hover{
 	background: white;
@@ -27,6 +27,11 @@ aside{
 	height: 14.1%;
 	display: inline-block;
 	text-align: center;
+}
+option{
+	background-color: black;
+	color: white;
+	width: 15%;
 }
 .InitHelp{
 	margin-left: 86%;
@@ -89,11 +94,10 @@ aside{
 	nav{
 		display: inline-block;
 		width: 10.4%;
-		height: 46.8vw;
+		height: 46.75vw;
 		padding: 2.1%;
 		margin-left: 2.1%;
 		margin-top: 2.1%;
-		margin-bottom: 2.1%;
 		text-align: center;
 		overflow: auto;
 	}
