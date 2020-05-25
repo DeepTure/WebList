@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<title>
@@ -84,7 +84,7 @@
 			<br>
 		</p>
 		<p class="subtitle">
-			Tus grupos
+			Mis grupos
 		</p>
 		<p class="space">
 			<br>
@@ -161,7 +161,7 @@
 					Horario del grupo
 				</p>
 				<div id="pdf">
-					<embed id="pdfs" src="img/tec-Programacion-escolarizado.pdf" type="application/pdf" style="height: 35vw; width: 80%;"/>
+					<embed id="pdfs" src="Img/tec-Programacion-escolarizado.pdf" type="application/pdf" style="height: 35vw; width: 80%;"/>
 				</div>
 			</div>
 			<p class="space">
@@ -171,14 +171,8 @@
 
 			<div name="lista">
 				<p class="atxt">
-					Listas -
-					<!-- las materias aparecen aqui automaticamente segun el semestre seleccionado-->
-					<label class="atxt">
-						Unidades de aprendizaje
-					</label>
-					<select name="opt" class="inputtxt" id="materias">
-						<option value="m1">_
-					</select>
+					Lista del grupo 
+					<input type="button" name="save" value="Pasar lista" id="btn" class="inputbutn int">
 				</p>
 				<p class="space">
 					<br><br><br><br><br><br><br><br><br><br><br><br>
@@ -223,7 +217,7 @@
 			opc=mat1.length;
 			//ponemos el tamaño del arreglo en el select
 			document.getElementById("materias").length= opc;
-			document.getElementById("pdfs").src="img/tec-computacion-escolarizado.pdf";
+			document.getElementById("pdfs").src="Img/tec-computacion-escolarizado.pdf";
 			for(var i=0;i<opc;i++){
 				//metemos una por una cada materia a el select
 				document.getElementById("materias").options[i].text=mat1[i];
@@ -235,7 +229,7 @@
 		function camb4(){
 			opc=mat2.length;
 			document.getElementById("materias").length = opc;
-			document.getElementById("pdfs").src="img/tec-Programacion-escolarizado.pdf";
+			document.getElementById("pdfs").src="Img/tec-Programacion-escolarizado.pdf";
 			for(var i=0;i<opc;i++){
 				document.acciones.opt.options[i].text=mat2[i];
 				document.acciones.opt.options[i].value=mat2[i];
@@ -244,7 +238,7 @@
 		function camb6(){
 			opc=mat3.length;
 			document.getElementById("materias").length = opc;
-			document.getElementById("pdfs").src="img/ESFM-Licenciatura-en-Física-y-Matemáticas.pdf";
+			document.getElementById("pdfs").src="Img/ESFM-Licenciatura-en-Física-y-Matemáticas.pdf";
 			for(var i=0;i<opc;i++){
 				document.acciones.opt.options[i].text=mat3[i];
 				document.acciones.opt.options[i].value=mat3[i];
