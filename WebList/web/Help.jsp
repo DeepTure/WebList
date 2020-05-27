@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Help
+    Created on : 27/05/2020, 03:49:39 PM
+    Author     : crist
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 ﻿<!DOCTYPE html>
 <html>
 <head>
@@ -112,10 +119,10 @@
 				<div class="space">
 					<br>
 				</div>
-				<input type="button" name="Log" value="Recuperar cuenta" class="inputbutn nav int" onclick="location.href='Recover.html'">
+				<input type="button" name="Log" value="Recuperar cuenta" class="inputbutn nav int" onclick="location.href='Recover.jsp'">
 				<br>
 				<br>
-				<input type="button" name="Volver" value="Menú principal" class="inputbutn nav int padd" onclick="location.href='index.html'">
+				<input type="button" name="Volver" value="Menú principal" class="inputbutn nav int padd" onclick="location.href='index.jsp'">
 			</form>
 		</div>
 	</nav>

@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : 27/05/2020, 03:35:40 PM
+    Author     : DeepTure
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,59 +80,74 @@
 	<script src="JS/Validate.js"></script>
 </head>
 <body link="Black" vlink="Black" alink="Black" class="bg-img">
-	
 	<nav>
 		<article class="ImgicoLog logo">
 			
 		</article>
 	</nav>
-	
-	<div class="blockAn fg-img">
-		<p class="space">
+
+	<div class="block start fg-img">
+		<div class="space">
 			<br>
-			<!--No quitar el br dinamico-->
-		</p>
-		<p class="title">
-			Recuperar cuenta
-		</p>
-		<p class="space">
+		</div>	
+		
+		<a href="Help.jsp" class="InitHelp">
+			<aside class="logoHelp">
+				<div class="space">
+					<br>
+					<br>
+					<br>
+				</div>
+				<div class="atxt">
+					Ayuda
+				</div>
+			</aside>
+		</a>
+
+		<div class="title">
+			Iniciar sesi&oacute;n
+		</div>
+		
+		<div class="space">
 			<br>
-		</p>
-		<p class="atxt">
-			Para recuperar su contraseña llene los siguientes campos: 
-		</p>
-		<p class="space">
-			<br>
-		</p>
-		<form method="post">
-			<p class="atxt">
-				Correo electronico:
-			</p>
-			<p class="space">
-				<br>
-			</p>
-			<input type="text" name="Mail" class="inputtxt">
-			<p class="space">
-				<br>
-				<br>
-				<br>
-			</p>
-			<p class="atxt">
-				Número de empleado:
-			</p>
-			<p class="space">
-				<br>
-			</p>
-			<input type="text" name="ID" class="inputtxt">
-			<p class="space">
-				<br>
-			</p>
-			<p class="space">
-				<br>
-			</p>
-			<input type="button" name="Send" class="inputbutn int" value="Enviar">
-		</form>
-		<input type="button" class="inputbutn int" value="Menú principal" style="margin-top: 20%; margin-left: 80%;" onclick="location.href='index.html'">
+		</div>
+
+		<div>
+			<form method="post" id="LogIn">
+				<p class="subtitle">
+					Usuario
+				</p>
+				<div class="space">
+					<br>
+				</div>
+				<input type="text" id="Account" class="inputtxt">
+				<div class="space">
+					<br>
+					<br>
+					<br>
+				</div>
+				<p class="subtitle">
+					Contrase&ntilde;a
+				</p>
+				<div class="space">
+					<br>
+				</div>
+				<input type="password" id="Password" class="inputtxt">
+				<div class="space">
+					<br>
+					<br>
+					<br>
+					<br>
+				</div>
+				<input type="button" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" onclick="Log_In()">
+				<div class="space">
+					<br>
+				</div>
+				<input type="button" id="Recover" value="Recuperar cuenta" class="inputbutn int" onclick="location.href='Recover.jsp'">
+			</form>
+		</div>	
+
 	</div>
 </body>
 </html>
+

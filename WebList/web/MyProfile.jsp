@@ -1,3 +1,10 @@
+<%-- 
+    Document   : MyProfile
+    Created on : 27/05/2020, 03:43:43 PM
+    Author     : crist
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,72 +81,70 @@
 </head>
 <body link="Black" vlink="Black" alink="Black" class="bg-img">
 	<nav>
-		<article class="ImgicoLog logo">
-			
-		</article>
+		Mi Perfil
+		<br>
+		<br>
+        <input type="button" name="Volver" value="Volver" class="inputbutn nav int padd" onclick="location.href='Home.jsp'">
 	</nav>
-
-	<div class="block start fg-img">
+	<div class="blockAn fg-img">
 		<div class="space">
 			<br>
-		</div>	
-		
-		<a href="Help.html" class="InitHelp">
-			<aside class="logoHelp">
-				<div class="space">
-					<br>
-					<br>
-					<br>
-				</div>
-				<div class="atxt">
-					Ayuda
-				</div>
-			</aside>
-		</a>
-
-		<div class="title">
-			Iniciar sesi&oacute;n
+			<br>
+			<br>
 		</div>
-		
+		<div class="title" style="text-align: left; margin-left: 1.5rem;">
+			Cambiar contraseña
+		</div>
 		<div class="space">
 			<br>
 		</div>
-
+		<div class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+			Usar al menos 8 caracteres entre mayusculas y minusculas con al menos 1 numero
+		</div>
+		<div class="space">
+			<br>
+		</div>
 		<div>
-			<form method="post" id="LogIn">
-				<p class="subtitle">
-					Usuario
+			<form method="post" id="password" style="text-align: left;">
+				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+					Nueva contraseña
 				</p>
 				<div class="space">
 					<br>
 				</div>
-				<input type="text" id="Account" class="inputtxt">
+				<input type="password" id="pass1" class="inputtxt" style="margin-left: 1.5rem;">
 				<div class="space">
 					<br>
-					<br>
-					<br>
 				</div>
-				<p class="subtitle">
-					Contrase&ntilde;a
+				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+					Confirmar contraseña
 				</p>
 				<div class="space">
 					<br>
 				</div>
-				<input type="password" id="Password" class="inputtxt">
-				<div class="space">
-					<br>
-					<br>
-					<br>
-					<br>
-				</div>
-				<input type="button" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" onclick="Log_In()">
+				<input type="password" id="pass2" class="inputtxt" style="margin-left: 1.5rem;">
 				<div class="space">
 					<br>
 				</div>
-				<input type="button" id="Recover" value="Recuperar cuenta" class="inputbutn int" onclick="location.href='Recover.html'">
+				<input type="button" id="Login" value="Enviar" class="inputbutn int" onclick="changePassword()" style="margin-left: 1.5rem;">
+				<div class="space">
+                    <br>
+                    <br>
+                    <br>
+				</div>
+				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+					Añadir Correo
+				</p>
+				<div class="space">
+					<br>
+				</div>
+				<input type="text" id="email" class="inputtxt" style="margin-left: 1.5rem;">
+				<div class="space">
+					<br>
+				</div>
+				<input type="button" id="Login" value="Enviar" class="inputbutn int" onclick="verEmail()" style="margin-left: 1.5rem;">
 			</form>
-		</div>	
-
+		</div>
 	</div>
 </body>
 </html>

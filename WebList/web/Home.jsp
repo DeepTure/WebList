@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Home
+    Created on : 27/05/2020, 03:47:37 PM
+    Author     : crist
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 ﻿<!DOCTYPE html>
 <html>
 <head>
@@ -139,11 +146,11 @@
 
 		<!-- botones para salir de tu cuenta y para configurara tu cuenta-->
 		<div class="padd">
-			<input type="button" name="Perfil" value="Perfil" onclick="location.href='MyProfile.html'" class="inputbutn nav int ">
+			<input type="button" name="Perfil" value="Perfil" onclick="location.href='MyProfile.jsp'" class="inputbutn nav int ">
 			<p class="space">
 				<br>
 			</p>
-			<input type="button" name="LogOut" value="Cerrar sesión" onclick="location.href='index.html'" class="inputbutn nav int">
+			<input type="button" name="LogOut" value="Cerrar sesión" onclick="location.href='index.jsp'" class="inputbutn nav int">
 		</div>
 
 	</nav>

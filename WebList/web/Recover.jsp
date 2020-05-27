@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Recover
+    Created on : 27/05/2020, 03:37:09 PM
+    Author     : crist
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,71 +80,59 @@
 	<script src="JS/Validate.js"></script>
 </head>
 <body link="Black" vlink="Black" alink="Black" class="bg-img">
+	
 	<nav>
-		Mi Perfil
-		<br>
-		<br>
-        <input type="button" name="Volver" value="Volver" class="inputbutn nav int padd" onclick="location.href='Home.html'">
+		<article class="ImgicoLog logo">
+			
+		</article>
 	</nav>
+	
 	<div class="blockAn fg-img">
-		<div class="space">
+		<p class="space">
 			<br>
+			<!--No quitar el br dinamico-->
+		</p>
+		<p class="title">
+			Recuperar cuenta
+		</p>
+		<p class="space">
 			<br>
+		</p>
+		<p class="atxt">
+			Para recuperar su contraseña llene los siguientes campos: 
+		</p>
+		<p class="space">
 			<br>
-		</div>
-		<div class="title" style="text-align: left; margin-left: 1.5rem;">
-			Cambiar contraseña
-		</div>
-		<div class="space">
-			<br>
-		</div>
-		<div class="subtitle" style="text-align: left; margin-left: 1.5rem;">
-			Usar al menos 8 caracteres entre mayusculas y minusculas con al menos 1 numero
-		</div>
-		<div class="space">
-			<br>
-		</div>
-		<div>
-			<form method="post" id="password" style="text-align: left;">
-				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
-					Nueva contraseña
-				</p>
-				<div class="space">
-					<br>
-				</div>
-				<input type="password" id="pass1" class="inputtxt" style="margin-left: 1.5rem;">
-				<div class="space">
-					<br>
-				</div>
-				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
-					Confirmar contraseña
-				</p>
-				<div class="space">
-					<br>
-				</div>
-				<input type="password" id="pass2" class="inputtxt" style="margin-left: 1.5rem;">
-				<div class="space">
-					<br>
-				</div>
-				<input type="button" id="Login" value="Enviar" class="inputbutn int" onclick="changePassword()" style="margin-left: 1.5rem;">
-				<div class="space">
-                    <br>
-                    <br>
-                    <br>
-				</div>
-				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
-					Añadir Correo
-				</p>
-				<div class="space">
-					<br>
-				</div>
-				<input type="text" id="email" class="inputtxt" style="margin-left: 1.5rem;">
-				<div class="space">
-					<br>
-				</div>
-				<input type="button" id="Login" value="Enviar" class="inputbutn int" onclick="verEmail()" style="margin-left: 1.5rem;">
-			</form>
-		</div>
+		</p>
+		<form method="post">
+			<p class="atxt">
+				Correo electronico:
+			</p>
+			<p class="space">
+				<br>
+			</p>
+			<input type="text" name="Mail" class="inputtxt">
+			<p class="space">
+				<br>
+				<br>
+				<br>
+			</p>
+			<p class="atxt">
+				Número de empleado:
+			</p>
+			<p class="space">
+				<br>
+			</p>
+			<input type="text" name="ID" class="inputtxt">
+			<p class="space">
+				<br>
+			</p>
+			<p class="space">
+				<br>
+			</p>
+			<input type="button" name="Send" class="inputbutn int" value="Enviar">
+		</form>
+		<input type="button" class="inputbutn int" value="Menú principal" style="margin-top: 20%; margin-left: 80%;" onclick="location.href='index.jsp'">
 	</div>
 </body>
 </html>

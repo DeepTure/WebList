@@ -1,3 +1,10 @@
+<%-- 
+    Document   : HomeAdmin
+    Created on : 27/05/2020, 03:46:01 PM
+    Author     : crist
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,7 +115,7 @@
 			<p class="space">
 				<br>
 			</p>
-			<button class="inputbutn int nav" onclick="location.href='index.html'">
+			<button class="inputbutn int nav" onclick="location.href='index.jsp'">
 				Cerrar sesion
 			</button>
 		</div>
