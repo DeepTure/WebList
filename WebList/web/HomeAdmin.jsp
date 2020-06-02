@@ -11,6 +11,7 @@
 	<title>
 		WebList
 	</title>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<link rel="shortcut icon" href="Img/DeepTureL.ico" />
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: no-preference)" href="CSS/RespL.css">
@@ -96,15 +97,16 @@
 		<p class="space">
 			<br>
 		</p>
-		<a href="#">4IV7</a>
+		<!-- De momento los grupos se vana a quedar estaticos solo para los cuartos -->
+		<a href="#" class="g7">4IV7</a>
 		<p class="space">
 			<br>
 		</p>
-		<a href="#">4IV7</a>
+		<a href="#"  class="g8">4IV8</a>
 		<p class="space">
 			<br>
 		</p>
-		<a href="#">4IV7</a>
+		<a href="#" class="g9">4IV9</a>
 		<p class="space">
 			<br>
 		</p>
@@ -120,7 +122,7 @@
 			</button>
 		</div>
 	</nav>
-
+        <%=request.getAttribute("code")%>
 	<div class="blockAn fg-img">
 		<p class="space">
 			<br>
@@ -136,7 +138,7 @@
 			<br>
 		</p>
 		<!-- este es el formulario para los alumnos -->
-		<form>
+        <form id="alumno" method="post" action="CRUDalumno">
 			<select class="inputtxt">
 				<option>Alumno 1</option>
 				<option>Alumno 2</option>
@@ -146,7 +148,7 @@
 				<br>
 			</p>
 			<p class="atxt">
-				Boleta: <input type="number" name="" class="inputtxt">
+				Boleta: <input type="number" name="boleta" class="inputtxt">
 			</p>
 			<p class="space">
 				<br>
@@ -155,31 +157,61 @@
 			<!-- el año de ingreso lo omití porque viene en la boleta y creo que no es necesario -->
 			
 			<p class="atxt">
-				Nombres: <input type="text" name="" class="inputtxt">
+				Nombres: <input type="text" name="nombres" class="inputtxt">
 			</p>
 			<p class="space">
 				<br>
 			</p>
 			<p class="atxt">
-				Apellido paterno: <input type="text" name="" class="inputtxt">
+				Apellido paterno: <input type="text" name="app" class="inputtxt">
 			</p>
 			<p class="space">
 				<br>
 			</p>
 			<p class="atxt">
-				Apellido materno: <input type="text" name="" class="inputtxt">
+				Apellido materno: <input type="text" name="apm" class="inputtxt">
 			</p>
 			<p class="space">
 				<br>
 			</p>
 
 			<!-- Botones del  formulariio-->
-			<input type="submit" name="" value="Guardar" class="inputbutn int">
-			<p class="space">
+						<input type="hidden" id="gr" name="grupo" value="null">
+                        <input type="hidden" id="command" name="instruction" value="null">
+                        <input type="radio" name="election" class="new" value="new">Guardar como nuevo<br>
+                        <input type="radio" name="election" class="save" value="save" onclick="">Guardar cambios<br>
+                        <input type="radio" name="election" class="delete" value="delete" onclick="">Eliminar<br>
+            <p class="space">
 				<br>
 			</p>
-			<input type="submit" name="" value="Eliminar" class="inputbutn int">
+            <input type="submit" value="Ejecutar acciones" class="inputbutn int">
 		</form>
+		<!-- Este script se encarga de cambiar la instruccion del hidden -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.new').click(function(){
+					document.getElementById('command').value='new';
+				});
+				$('.save').click(function(){
+					document.getElementById('command').value='save';
+				});
+				$('.delete').click(function(){
+					document.getElementById('command').value='delete';
+				});
+				
+				//esto es de los grupos
+				$('.g7').click(function(){
+					document.getElementById('gr').value="4IV7";
+				});
+				$('.g8').click(function(){
+					document.getElementById('gr').value="4IV8";
+				});
+				$('.g9').click(function(){
+					document.getElementById('gr').value="4IV9";
+				});
+			});
+		</script>
+
 
 		<p class="space">
 			<br>

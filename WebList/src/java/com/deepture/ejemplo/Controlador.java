@@ -1,7 +1,7 @@
 /*
  *
  */
-package com.deepture;
+package com.deepture.ejemplo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,7 +35,7 @@ public class Controlador extends HttpServlet {
     private Modelo modelo;
     
     //definir el datasource
-    @Resource(name="jdbc/Productos")
+    @Resource(name="jdbc/Data")
     private DataSource miPool;
     
     

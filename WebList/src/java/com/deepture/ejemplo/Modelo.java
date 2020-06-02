@@ -1,4 +1,4 @@
-package com.deepture;
+package com.deepture.ejemplo;
 
 import java.sql.*;
 import javax.sql.DataSource;

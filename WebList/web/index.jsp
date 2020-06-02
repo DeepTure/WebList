@@ -113,7 +113,7 @@
 		</div>
 
 		<div>
-			<form method="post" id="LogIn">
+			<form method="post" id="LogIn" action="HomeAdmin.jsp">
 				<p class="subtitle">
 					Usuario
 				</p>
@@ -139,7 +139,7 @@
 					<br>
 					<br>
 				</div>
-				<input type="button" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" onclick="Log_In()">
+				<input type="submit" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" >
 				<div class="space">
 					<br>
 				</div>
