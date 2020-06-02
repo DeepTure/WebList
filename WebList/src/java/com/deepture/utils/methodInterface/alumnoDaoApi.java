@@ -14,4 +14,8 @@ import com.deepture.utils.classdata.alumno;
 public interface alumnoDaoApi {
     
     boolean create(alumno al,String gro)throws Exception;
+    
+    boolean update(alumno al)throws Exception;
+    
+    boolean delete(int boleta)throws Exception;
 }

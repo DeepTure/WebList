@@ -18,5 +18,9 @@ public class alumnoValidacion implements alumnoValDao{
     public String newStudentsValidate(alumno al, String gr) {
         return "ok";
     }
-    
+
+    @Override
+    public String validarBoleta(int boleta) {
+        return "ok";
+    }
 }

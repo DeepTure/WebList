@@ -113,7 +113,7 @@
 		</div>
 
 		<div>
-			<form method="post" id="LogIn" action="HomeAdmin.jsp">
+			<form method="post" id="LogIn">
 				<p class="subtitle">
 					Usuario
 				</p>
@@ -138,14 +138,20 @@
 					<br>
 					<br>
 					<br>
-				</div>
-				<input type="submit" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" >
+				</div><!-- Cuando tenga funcion este boton se convierte en submit-->
+                                <input type="button" onclick="go()" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" >
 				<div class="space">
 					<br>
 				</div>
 				<input type="button" id="Recover" value="Recuperar cuenta" class="inputbutn int" onclick="location.href='Recover.jsp'">
 			</form>
 		</div>	
+            <script>
+                //esta funcion estará mientras no tenga accion el login
+                function go(){
+                    window.location.replace("HomeAdmin.jsp");
+                }
+            </script>
 
 	</div>
 </body>

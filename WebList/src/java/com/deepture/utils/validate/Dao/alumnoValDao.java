@@ -12,5 +12,8 @@ import com.deepture.utils.classdata.alumno;
  * @author JAFET
  */
 public interface alumnoValDao {
+    
     String newStudentsValidate(alumno al, String gr);
+    
+    String validarBoleta(int boleta);
 }
