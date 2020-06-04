@@ -7,8 +7,15 @@ package com.deepture.utils.models;
 
 import com.deepture.utils.classdata.alumno;
 import com.deepture.utils.methodInterface.alumnoDaoApi;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 /**
@@ -74,5 +81,26 @@ public class alumnoDaoImp implements alumnoDaoApi{
         ps.close();
         //si todo salió bien hasta este punto retornar un true
         return true;
+    }
+
+    @Override
+    public List<alumno> getAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PrintWriter out=response.getWriter();
+        List<alumno> alumnos = new ArrayList();
+        Connection cn = connection.getConnection();
+       Statement st = null;
+       ResultSet rs=null;
+       st = cn.createStatement();
+       rs = st.executeQuery("SELECT * FROM alumno");
+       while(rs.next()){
+           int boleta = rs.getInt("Boleta");
+           String nombres = rs.getString("Nombre");
+           String app = rs.getString("App");
+           String apm = rs.getString("Apm");
+           String correo = rs.getString("correo");
+           alumno al = new alumno(boleta, nombres, app, apm, correo);
+           alumnos.add(al);
+       }
+       return alumnos;
     }
 }

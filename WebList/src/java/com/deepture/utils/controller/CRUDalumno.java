@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -62,6 +63,18 @@ public class CRUDalumno extends HttpServlet {
             throws ServletException, IOException {
             PrintWriter out=response.getWriter();
        String instruction = request.getParameter("instruction");
+       if(request.getAttribute("load")=="t"){
+           out.println("entra");
+                try {
+                    List<alumno> alumnos=model.getAll(request, response);
+                    request.setAttribute("alumnosD", alumnos);
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
+                } catch (Exception ex) {
+                    out.println(ex);
+                }
+       }else{
 
        switch(instruction){
            case "new":
@@ -77,7 +90,7 @@ public class CRUDalumno extends HttpServlet {
                         newStudents(al, group, request, response);
                     }else{
                         request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-            "                               alert('error, un dato es nulo, Recuerde elegir una instruccion (guardar como nuevo, guardar cambios, eliminar)');\n" +
+            "                               alert('error, un dato es nulo, Recuerde elegir un grupo');\n" +
             "                               </script>");
                         //enviar ese request a la pagina jsp
                         RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
@@ -149,6 +162,7 @@ public class CRUDalumno extends HttpServlet {
                         RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
                         disp.forward(request, response);
             break;
+       }
        }
        
     }

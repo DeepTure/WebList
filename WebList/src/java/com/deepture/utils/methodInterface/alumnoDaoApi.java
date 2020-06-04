@@ -6,6 +6,9 @@
 package com.deepture.utils.methodInterface;
 
 import com.deepture.utils.classdata.alumno;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -18,4 +21,6 @@ public interface alumnoDaoApi {
     boolean update(alumno al)throws Exception;
     
     boolean delete(int boleta)throws Exception;
+    
+    List<alumno> getAll (HttpServletRequest request, HttpServletResponse response)throws Exception;
 }

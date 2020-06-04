@@ -4,10 +4,23 @@
     Author     : crist
 --%>
 
+<%@page import="java.util.List"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="com.deepture.utils.classdata.alumno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+        <%
+        //obtiene los productos del controlador
+            List<alumno> alumnos=(List<alumno>) request.getAttribute("alumnosD");
+            if(alumnos==null){
+                alumnos=(List<alumno>)session.getAttribute("als");
+            }else{
+                session.setAttribute("als", alumnos);
+            }
+        %>
+        
 	<title>
 		WebList
 	</title>
@@ -122,6 +135,7 @@
 			</button>
 		</div>
 	</nav>
+        <!-- este code son las alertas que manda el backend por errores -->
         <%=request.getAttribute("code")%>
 	<div class="blockAn fg-img">
 		<p class="space">
@@ -137,12 +151,13 @@
 		<p class="space">
 			<br>
 		</p>
+
 		<!-- este es el formulario para los alumnos -->
         <form id="alumno" method="post" action="CRUDalumno">
 			<select class="inputtxt">
-				<option>Alumno 1</option>
-				<option>Alumno 2</option>
-				<option>Alumno 3</option>
+                            <%for(alumno a: alumnos){%>
+                            <option value="<%= a.getNombre() %>" id=""><%= a.getNombre() %></option>
+                            <%}%>  
 			</select>
 			<p class="space">
 				<br>
@@ -188,6 +203,10 @@
 		</form>
 		<!-- Este script se encarga de cambiar la instruccion del hidden -->
 		<script type="text/javascript">
+                    window.location.hash="no-back-button";
+                    window.location.hash="Again-No-back-button";//esta linea es necesaria para chrome
+                    window.onhashchange=function(){window.location.hash="no-back-button";}
+                    
 			$(document).ready(function(){
 				$('.new').click(function(){
 					document.getElementById('command').value='new';
@@ -224,7 +243,7 @@
 		<p class="space">
 			<br>
 		</p>
-		<form>
+		<form action="CRUDprofesor" method="post">
 			<select class="inputtxt">
 				<option>Profesor 1</option>
 				<option>Profesor 2</option>
@@ -234,37 +253,65 @@
 				<br>
 			</p>
 			<p class="atxt">
-				Numero de empleado: <input type="number" name="" class="inputtxt">
+				Numero de empleado: <input type="number" name="nempleado" class="inputtxt">
 			</p>
 			<p class="space">
 				<br>
 			</p>
 			<p class="atxt">
-				Nombres: <input type="text" name="" class="inputtxt">
+				Nombres: <input type="text" name="nombres" class="inputtxt">
 			</p>
 			<p class="space">
 				<br>
 			</p>
 			<p class="atxt">
-				Apellido paterno: <input type="text" name="" class="inputtxt">
+				Apellido paterno: <input type="text" name="app" class="inputtxt">
 			</p>
 			<p class="space">
 				<br>
 			</p>
 			<p class="atxt">
-				Apellido materno: <input type="text" name="" class="inputtxt">
+				Apellido materno: <input type="text" name="apm" class="inputtxt">
 			</p>
 			<p class="space">
 				<br>
 			</p>
+                        <input type="checkbox" id="ch" name="ch" value="PSW"><label for="ch">PSW</label><br>
+                        <input type="checkbox" id="ch2" name="ch" value="TPPC"><label for="ch2">TPPC</label><br>
+                        <input type="checkbox" id="ch3" name="ch" value="BBDD"><label for="ch3">BBDD</label><br>
+                        <input type="checkbox" id="ch4" name="ch" value="LPTI"><label for="ch4">LPTI</label>
 
-			<!-- Botones del formulario profesor -->
-			<input type="submit" name="" value="Guardar" class="inputbutn int">
 			<p class="space">
 				<br>
 			</p>
-			<input type="submit" name="" value="Eliminar" class="inputbutn int">
+			<!-- Botones del  formulariio-->
+                        <input type="hidden" id="commando" name="instruction" value="null">
+                        <input type="radio" name="election" class="new2" value="new">Guardar como nuevo<br>
+                        <input type="radio" name="election" class="save2" value="save" onclick="">Guardar cambios<br>
+                        <input type="radio" name="election" class="delete2" value="delete" onclick="">Eliminar<br>
+                        <p class="space">
+				<br>
+			</p>
+            <input type="submit" value="Ejecutar acciones" class="inputbutn int">
+            <p class="space">
+				<br>
+			</p>
 		</form>
+		<!--Este script va hacer dinamica la instruccion que le llega al controlador -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.new2').click(function(){
+					document.getElementById('commando').value='new';
+				});
+				$('.save2').click(function(){
+					document.getElementById('commando').value='save';
+				});
+				$('.delete2').click(function(){
+					document.getElementById('commando').value='delete';
+				}); 
+			});
+		</script>
+
 	</div>
 </body>
 </html>

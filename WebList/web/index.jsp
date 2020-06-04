@@ -111,16 +111,16 @@
 		<div class="space">
 			<br>
 		</div>
-
+                <%=request.getAttribute("code")%>
 		<div>
-			<form method="post" id="LogIn">
+			<form method="post" id="LogIn" action="InicioSesionController">
 				<p class="subtitle">
 					Usuario
 				</p>
 				<div class="space">
 					<br>
 				</div>
-				<input type="text" id="Account" class="inputtxt">
+				<input type="text" id="Account" class="inputtxt" name="user">
 				<div class="space">
 					<br>
 					<br>
@@ -132,14 +132,14 @@
 				<div class="space">
 					<br>
 				</div>
-				<input type="password" id="Password" class="inputtxt">
+				<input type="password" id="Password" class="inputtxt" name="pass">
 				<div class="space">
 					<br>
 					<br>
 					<br>
 					<br>
 				</div><!-- Cuando tenga funcion este boton se convierte en submit-->
-                                <input type="button" onclick="go()" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" >
+                                <input type="submit" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" >
 				<div class="space">
 					<br>
 				</div>
