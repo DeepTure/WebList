@@ -10,13 +10,7 @@ import com.deepture.utils.models.alumnoDaoImp;
 import com.deepture.utils.validate.alumnoValidacion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+import java.util.Date;
 
 /**
  *
@@ -153,7 +148,39 @@ public class CRUDalumno extends HttpServlet {
                 }
                
            break;
-           
+           case "4IV7":
+           {
+               try {
+                   allStudentsFrom(request,response);
+               } catch (Exception ex) {
+                   out.println(ex);
+               }
+           }
+           break;
+           case "4IV8":
+               try {
+                   allStudentsFrom(request,response);
+               } catch (Exception ex) {
+                   out.println(ex);
+               }
+            break;
+           case "4IV9":
+               try {
+                   allStudentsFrom(request,response);
+               } catch (Exception ex) {
+                   out.println(ex);
+               }
+            break;
+           case "saveAs":
+           {
+               try {
+                   passAssistance(request,response);
+               } catch (Exception ex) {
+                   out.println(ex);
+               }
+           }
+            break;
+
            default:
                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
             "                               alert('error, Debe elegir una accion');\n" +
@@ -237,6 +264,76 @@ public class CRUDalumno extends HttpServlet {
         }else{
             //se debe imprimir en la vista el error
         }
+    }
+
+    private void allStudentsFrom(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        PrintWriter out=response.getWriter();
+        List<alumno> alumnos=model.getAll(request, response);
+        List<alumno> alFromGr=model.getStudentsFrom(alumnos, request.getParameter("instruction"));
+        /*for(alumno a : alFromGr){
+            out.println(a.getBoleta());
+        }*/
+        if(alFromGr!=null){
+                request.setAttribute("id_profe",request.getParameter("idpr"));
+                request.setAttribute("alumnosD", alFromGr);
+                //enviar ese request a la pagina jsp
+                request.setAttribute("gr",request.getParameter("instruction"));
+                RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                disp.forward(request, response);
+        }else{
+            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+    "                               alert('Error, ha ocurrido un error interno');\n" +
+    "                               </script>");
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                disp.forward(request, response);
+        }
+    }
+
+    private void passAssistance(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        PrintWriter out=response.getWriter();
+        String[] asistio = request.getParameterValues("asistencia");
+        //INSERT INTO inasistencias VALUES(78,"PSW",1234,"4IV7","2020-10-27 20:50:03","2020-10-27 20:50:03")
+        /*for(String a: asistio){
+            out.println(a);
+        }
+        out.println("----------------");
+        java.util.Date fecha = new Date();
+        out.println(request.getParameter("materia"));
+        out.println(request.getParameter("idP"));
+        out.println(request.getParameter("gr"));
+        out.println(fecha);*/
+        //metemos la asistencia dentro de la bbdd
+        try{
+            java.util.Date fecha = new Date();
+            String mat = request.getParameter("materia");
+            int idp = Integer.parseInt(request.getParameter("idP"));
+            String gr = request.getParameter("gr");
+
+                boolean exito=model.registryAssistance(asistio,mat,idp,gr,fecha, request, response);
+                if(exito){
+                    request.setAttribute("id_profe",idp);
+                    request.setAttribute("gr","null");
+                    request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('Exito, se guardó la asistencia');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                        disp.forward(request, response);
+                }else{
+                    request.setAttribute("id_profe",idp);
+                    request.setAttribute("gr","null");
+                    request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('Error, ha ocurrido un error interno, asegurese de seleccionar un grupo, materia y alumnos');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                        disp.forward(request, response);
+                }
+        }catch(Exception e){
+            out.println(e);
+        }
+
     }
 
 }

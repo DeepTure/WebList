@@ -96,6 +96,8 @@ public class InicioSesionController extends HttpServlet {
                 RequestDispatcher disp=request.getRequestDispatcher("/CRUDalumno");
                 disp.forward(request, response);
             }else if(model.logIn(profe)){
+                        request.setAttribute("id_profe",id);
+                        request.setAttribute("gr","null");
                         RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
                         disp.forward(request, response);
             }else{

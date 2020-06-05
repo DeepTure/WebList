@@ -111,7 +111,7 @@
 		<div class="space">
 			<br>
 		</div>
-                <%=request.getAttribute("code")%>
+                
 		<div>
 			<form method="post" id="LogIn" action="InicioSesionController">
 				<p class="subtitle">
@@ -147,13 +147,11 @@
 			</form>
 		</div>	
             <script>
-                //esta funcion estará mientras no tenga accion el login
-                function go(){
-                    window.location.replace("HomeAdmin.jsp");
-                }
+                
             </script>
-
+            
 	</div>
 </body>
+<%=request.getAttribute("code")%>
 </html>
 

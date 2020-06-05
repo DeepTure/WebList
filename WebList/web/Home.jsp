@@ -4,15 +4,34 @@
     Author     : crist
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.List"%>
+<%@page import="com.deepture.utils.classdata.alumno"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 ﻿<!DOCTYPE html>
 <html>
-<head>
+<head>  <%
+        //obtiene los productos del controlador
+            List<alumno> alumnos=(List<alumno>) request.getAttribute("alumnosD");
+            if(alumnos==null){
+                alumnos=(List<alumno>)session.getAttribute("als");
+            }else{
+                session.setAttribute("als", alumnos);
+            }
+            //esto es para tener el id del profesor
+            String id = String.valueOf(request.getAttribute("id_profe"));
+            if(id==null){
+                id=String.valueOf(session.getAttribute("id_p"));
+            }else{
+                session.setAttribute("id_p", id);
+            }
+        %>
 	<title>
 		WebList
 	</title>
 	<link rel="shortcut icon" href="Img/DeepTureL.ico" />
 	<meta charset="utf-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: no-preference)" href="CSS/RespL.css">
 	<link rel="stylesheet" type="text/css" media="screen and (prefers-color-scheme: no-preference)" href="CSS/FuenteL.css">
 
@@ -99,49 +118,31 @@
 			<br>
 		</p>
 		<div class="atxt">
-			<a href="#" onclick="camb4()">
-				4IV7
-			</a>
+                    <form action="CRUDalumno" method="post">
+                        <input type="hidden" name="idpr" value="<%=id%>">
+                        <input type="hidden" name="instruction" value="4IV7">
+                        <input type="submit" name="" value="4IV7">
+                    </form>
 
 			<p class="space">
 				<br>
 			</p>
 
-			<a href="#" onclick="camb4()">
-				4IV8
-			</a>
-
-			<p class="space">
-				<br>
-			</p>
-			
-			<a href="#" onclick="camb6()">
-				6IV1
-			</a>
+                    <form action="CRUDalumno" method="post">
+                        <input type="hidden" name="idpr" value="<%=id%>">
+                        <input type="hidden" name="instruction" value="4IV8">
+                        <input type="submit" name="" value="4IV8">
+                    </form>
 
 			<p class="space">
 				<br>
 			</p>
 			
-			<a href="#" onclick="camb6()">
-				6IV2
-			</a>
-
-			<p class="space">
-				<br>
-			</p>
-			
-			<a href="#" onclick="camb2()">
-				2IV2
-			</a>
-			
-			<p class="space">
-				<br>
-			</p>
-
-			<a href="#" onclick="camb2()">
-				2IV4
-			</a>
+                    <form action="CRUDalumno" method="post">
+                        <input type="hidden" name="idpr" value="<%=id%>">
+                        <input type="hidden" name="instruction" value="4IV9">
+                        <input type="submit" name="" value="4IV9">
+                    </form>
 		</div>
 
 		<!-- botones para salir de tu cuenta y para configurara tu cuenta-->
@@ -162,7 +163,7 @@
 				<!--No quitar el br dinamico-->
 			</p>
 
-		<form name="acciones" action="#">
+		<form action="CRUDalumno" method="post">
 			<div class="pdf">
 				<p class="title">
 					Horario del grupo
@@ -178,27 +179,76 @@
 
 			<div name="lista">
 				<p class="atxt">
-					Lista del grupo 
-					<input type="button" name="save" value="Pasar lista" id="btn" class="inputbutn int">
+                                    Materia<br>
+					<input type="radio" name="rd" id="mat1" value="PSW"><label for="mat1">Programacion y servicios web</label><br>
+					<input type="radio" name="rd" id="mat2" value="TPPC"><label for="mat2">Tecnicas de programacion con calidad</label><br>
+					<input type="radio" name="rd" id="mat3" value="BBDD"><label for="mat3">Base de datos</label><br>
+					<input type="radio" name="rd" id="mat4" value="LPTI"><label for="mat"4>Laboratorio de proyectos de tecnologias de la informacion</label>
 				</p>
 				<p class="space">
-					<br><br><br><br><br><br><br><br><br><br><br><br>
-					<br><br><br><br><br><br><br><br><br><br><br><br>
+					<br><br>
 				</p>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$('#mat1').click(function(){
+							document.getElementById('command').value='PSW';
+						});
+						$('#mat2').click(function(){
+							document.getElementById('command').value='TPPC';
+						});
+						$('#mat3').click(function(){
+							document.getElementById('command').value='BBDD';
+						});
+						$('#mat4').click(function(){
+							document.getElementById('command').value='LPTI';
+						});
+					});
+				</script>
 			</div>
 			<!--botones para borrar o configurar las listas-->
 			<div>
 				<p class="atxt">
 					Lista actual: 
 				</p>
-				<p class="space">
-					<br>
-				</p>
-				<input type="button" name="save" value="Guardar" id="btn" class="inputbutn int">
-				<p class="space">
-					<br>
-				</p>
-				<input type="button" name="delete" value="Borrar" id="btn" class="inputbutn int">
+				
+                                <div>
+                                    <table border="2">
+                                        <tr>
+                                            <td>Boleta</td><td>Nombre</td><td>Asistencia</td>
+                                        </tr>
+                                        <%  boolean entra;
+                                            entra=false;
+                                            if(alumnos!=null){%>
+                                            <%for(alumno a: alumnos){%>
+                                                <tr>
+                                                    <td><%=a.getBoleta()%></td><td><%=a.getNombre()%> <%=a.getApp()%></td><td><input type="checkbox" name="asistencia" value="<%=a.getBoleta()%>"></td>
+                                                </tr>
+                                            <%} entra=true;
+                                        }else{%>
+                                            <tr>
+                                                <td>215</td><td>juan</td><td><input type="checkbox"></td>
+                                            </tr>
+                                        <%}%>
+                                    </table>
+                                
+                                
+                                    <p class="space">
+                                            <br>
+                                    </p>
+
+                                    <input type="hidden" name="instruction" value="saveAs">
+                                    <!-- Este id command es el que lleva la materia -->
+                                    <input type="hidden" name="materia" id="command" value="null">
+                                    <!--Este hidden tiene el id del profesor-->
+                                    <input type="hidden" name="idP" value="<%=id%>">
+                                    <!-- Este es el hidden donde tiene el grupo -->
+                                    <input type="hidden" name="gr" value="<%=request.getAttribute("gr")%>">
+                                    <input type="submit" name="save" value="Guardar" id="btn" class="inputbutn int">
+                                    <p class="space">
+                                            <br>
+                                    </p>
+                                    <input type="button" name="delete" value="Borrar" id="btn" class="inputbutn int">
+                                </div>
 				<p class="space">
 					<br>
 				</p>
@@ -234,13 +284,7 @@
 		}
 		//los mismo se repite en todas las funciones
 		function camb4(){
-			opc=mat2.length;
-			document.getElementById("materias").length = opc;
-			document.getElementById("pdfs").src="Img/tec-Programacion-escolarizado.pdf";
-			for(var i=0;i<opc;i++){
-				document.acciones.opt.options[i].text=mat2[i];
-				document.acciones.opt.options[i].value=mat2[i];
-			}
+			getElementById('ins').value="4IV7";
 		}
 		function camb6(){
 			opc=mat3.length;
@@ -254,4 +298,5 @@
 	</script>
 
 </body>
+    <%=request.getAttribute("code")%>
 </html>
