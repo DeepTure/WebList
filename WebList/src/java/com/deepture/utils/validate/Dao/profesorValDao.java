@@ -17,4 +17,8 @@ public interface profesorValDao {
     boolean numberEmployeeValidate(int numberE)throws Exception;
     
     boolean logInValidate(profesor profe)throws Exception;
+    
+    public boolean passwordAndIdValidate(String ps1, String ps2, int id) throws Exception;
+    
+    public boolean newEmailValidate(String email, int id);
 }

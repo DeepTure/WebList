@@ -29,5 +29,14 @@ public class profesorValidacion implements profesorValDao{
     public boolean logInValidate(profesor profe){
         return true;
     }
+
+    @Override
+    public boolean passwordAndIdValidate(String ps1, String ps2, int id) {
+        return true;
+    }
+
+    public boolean newEmailValidate(String email, int id) {
+        return true;
+    }
     
 }

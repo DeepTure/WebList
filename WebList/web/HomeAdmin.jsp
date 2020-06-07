@@ -124,7 +124,7 @@
 			<br>
 		</p>
 		<div class="padd">
-			<button class="inputbutn int nav">
+			<button class="inputbutn int nav" onclick="location.href='profileAdmin.jsp'">
 				Perfil
 			</button>
 			<p class="space">

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : MyProfile
-    Created on : 27/05/2020, 03:43:43 PM
-    Author     : crist
+    Document   : profileAdmin
+    Created on : 6/06/2020, 07:36:09 PM
+    Author     : JAFET
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -84,7 +84,7 @@
 		Mi Perfil
 		<br>
 		<br>
-        <input type="button" name="Volver" value="Volver" class="inputbutn nav int padd" onclick="location.href='Home.jsp'">
+        <input type="button" name="Volver" value="Volver" class="inputbutn nav int padd" onclick="location.href='HomeAdmin.jsp'">
 	</nav>
 	<div class="blockAn fg-img">
 		<div class="space">
@@ -105,7 +105,7 @@
 			<br>
 		</div>
 		<div>
-                        <form method="post" id="password" style="text-align: left;" action="CRUDprofesor">
+                        <form method="post" id="password" style="text-align: left;" action="adminController">
 				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
 					Nueva contraseña
 				</p>
@@ -140,7 +140,7 @@
                     <br>
                     <br>
                     <br>
-                        <form method="post" id="password" style="text-align: left;" action="CRUDprofesor">
+                        <form method="post" id="password" style="text-align: left;" action="adminController">
 				</div>
 				<p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
 					Añadir Correo
@@ -170,3 +170,4 @@
 </body>
     <%=request.getAttribute("code")%>
 </html>
+

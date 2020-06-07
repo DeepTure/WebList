@@ -76,12 +76,12 @@ public class profesorDaoImp implements profesorDaoApi{
                 ps.setString(2,materias[i]);
                 ps.executeUpdate();
             }
+            return true;
         }catch(Exception e){
             return false;
         }finally{
             ps.close();
-        }
-        return true;
+        } 
     }
 
     @Override
@@ -125,6 +125,42 @@ public class profesorDaoImp implements profesorDaoApi{
            }else{
                return false;
            }
+    }
+
+    @Override
+    public boolean chPsswrd(String ps1, String ps2, int id)throws Exception {
+        Connection cn = connection.getConnection();
+        PreparedStatement ps = null;
+        try{
+            ps = cn.prepareStatement("UPDATE profesores SET contraseña=? WHERE id_profesor=?");
+            ps.setString(1,ps1);
+            ps.setInt(2,id);
+            ps.executeUpdate();
+            return true;
+        }catch(Exception e){
+            return false;
+        }finally{
+            cn.close();
+            ps.close();
+        }
+    }
+
+    @Override
+    public boolean newEmailSave(String email, int id)throws Exception {
+        Connection cn = connection.getConnection();
+        PreparedStatement ps = null;
+        try{
+            ps = cn.prepareStatement("UPDATE profesores SET correo=? WHERE id_profesor=?");
+            ps.setString(1,email);
+            ps.setInt(2,id);
+            ps.executeUpdate();
+            return true;
+        }catch(Exception e){
+            return false;
+        }finally{
+            cn.close();
+            ps.close();
+        }
     }
     
 }

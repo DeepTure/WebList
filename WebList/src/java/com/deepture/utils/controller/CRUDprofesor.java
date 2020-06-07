@@ -11,6 +11,8 @@ import com.deepture.utils.models.profesorDaoImp;
 import com.deepture.utils.validate.profesorValidacion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -167,7 +169,32 @@ public class CRUDprofesor extends HttpServlet {
                         RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
                         disp.forward(request, response);
                }
-
+           case "changePassword":
+            {
+                try {
+                    changePassword(request, response);
+                } catch (Exception ex) {
+                    out.println(ex);
+                }
+            }
+           break;
+           case "newEmail":
+            {
+                try {
+                    newEmail(request,response);
+                } catch (Exception ex) {
+                   out.println(ex);
+                }
+            }
+            break;
+           default:
+                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('error, Debe elegir una accion');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
+            break;
        }
     }
 
@@ -254,6 +281,84 @@ public class CRUDprofesor extends HttpServlet {
             }
         }else{
             //impirmir el error
+        }
+    }
+
+    private void changePassword(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        String ps1 = request.getParameter("pass");
+        String ps2 = request.getParameter("pass2");
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        profesorValidacion val = new profesorValidacion();
+        
+        boolean itsok = val.passwordAndIdValidate(ps1, ps2, id);
+        if(itsok){
+            //si la contraseña 1 es igual a la contraseña 2
+            if(ps1.equals(ps2)){
+                boolean exito = model.chPsswrd(ps1, ps2, id);
+                if(exito){
+                    request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Se ha guardado con exito');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                            disp.forward(request, response);
+                }else{
+                    request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Ha ocurrido unn error interno, asegurese de escribir bien las contraseñas');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                            disp.forward(request, response);
+                }
+            }else{
+                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Las contraseñas no coinciden');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                            disp.forward(request, response);
+            }
+        }else{
+            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Ha introducido datos erroneos');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                            disp.forward(request, response);
+        }
+    }
+
+    private void newEmail(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        String email = request.getParameter("email");
+        int id = Integer.parseInt(request.getParameter("id"));
+        //validacion
+        profesorValidacion val = new profesorValidacion();
+        boolean itsok = val.newEmailValidate(email,id);
+        if(itsok){
+            boolean exito = model.newEmailSave(email, id);
+            if(exito){
+                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Se ha guardado con exito');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                            disp.forward(request, response);
+            }else{
+                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Ha ocurrido un error interno, asegurese de insertar datos correctos');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                            disp.forward(request, response);
+            }
+        }else{
+            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Ha introducido datos erroneos');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
+                            disp.forward(request, response);
         }
     }
 
