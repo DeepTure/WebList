@@ -15,7 +15,14 @@ public class adminValidate implements adminValdao{
 
     @Override
     public boolean passwordAndIdValidate(String ps1, String ps2, int id)throws Exception{
-        return true;
+        String vps1=ps1;
+        String vps2=ps2;
+        String vid =String.valueOf(id);
+        if(vps1.matches("^[a-zA-Z0-9]+${1,44}") && vps2.matches("^[a-zA-Z0-9]+${1,44}") && vid.matches("^[0-9]+${1,44}+$")){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override

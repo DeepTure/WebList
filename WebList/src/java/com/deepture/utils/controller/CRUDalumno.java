@@ -81,7 +81,7 @@ public class CRUDalumno extends HttpServlet {
                     String lastNM = request.getParameter("apm");
                     String email = "email@.com";
                     String group = request.getParameter("grupo");
-                    if(group!="null"){
+                    if(group!="null" && boleta.length()>0 && names.length()>0 && lastNF.length()>0 && lastNM.length()>0){
                         alumno al = new alumno(Integer.parseInt(boleta),names,lastNF,lastNM,email);
                         newStudents(al, group, request, response);
                     }else{
@@ -93,6 +93,12 @@ public class CRUDalumno extends HttpServlet {
                         disp.forward(request, response);
                     }
                }catch(Exception e){
+                   request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('error, No debe ingresar letras o puntos decimales en la boleta');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
                    //debe de direccionar a una pagina de errores e imprimir que pasó
                    out.println(e);
                }
@@ -105,7 +111,7 @@ public class CRUDalumno extends HttpServlet {
                     String lastNM = request.getParameter("apm");
                     String email = "email@.com";
                     String group = request.getParameter("grupo");
-                    if(group!="null"){
+                    if(group!="null" && boleta.length()>0 && names.length()>0 && lastNF.length()>0 && lastNM.length()>0){
                         alumno al = new alumno(Integer.parseInt(boleta),names,lastNF,lastNM,email);
                         updateStudents(al, group, request, response);
                     }else{
@@ -117,6 +123,12 @@ public class CRUDalumno extends HttpServlet {
                         disp.forward(request, response);
                     }
                }catch(Exception e){
+                   request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('error, No debe ingresar letras o puntos decimales en la boleta');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
                    //debe de direccionar a una pagina de errores e imprimir que pasó
                    out.println(e);
                }
@@ -219,6 +231,12 @@ public class CRUDalumno extends HttpServlet {
                 disp.forward(request, response);
             }
         }else{
+            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+    "                               alert('No inserto un dato bien');\n" +
+    "                               </script>");
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                disp.forward(request, response);
             //se debe imprimir en la vista el error
         }
     }
@@ -239,7 +257,13 @@ public class CRUDalumno extends HttpServlet {
                 RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
                 disp.forward(request, response);
             }else{
-                //se debe imprimir en la vista el error
+                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+    "                               alert('No inserto un dato bien');\n" +
+    "                               </script>");
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                disp.forward(request, response);
+            //se debe imprimir en la vista el error
             }
         }else{
             //se debe imprimir en la vista el error
@@ -260,7 +284,13 @@ public class CRUDalumno extends HttpServlet {
                 RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
                 disp.forward(request, response);
             }else{
-                //se debe imprimir en la vista el error
+                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+    "                               alert('No inserto un dato bien');\n" +
+    "                               </script>");
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                disp.forward(request, response);
+            //se debe imprimir en la vista el error
             }
         }else{
             //se debe imprimir en la vista el error

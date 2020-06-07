@@ -94,10 +94,26 @@ public class CRUDprofesor extends HttpServlet {
                         RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
                         disp.forward(request, response);
                    }else{
-                       profesor profe=new profesor(number,names,lastF,lastM,pass,email,subjects);
-                       newTeacher(profe,request,response);
+                       if(names.length()<=0 && lastF.length()<=0 && lastM.length() <=0 && pass.length()<=0 && email.length()<=0){
+                           request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('Debes de llenar los datos');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
+                       }else{
+                        profesor profe=new profesor(number,names,lastF,lastM,pass,email,subjects);
+                        newTeacher(profe,request,response);
+                       }
                    }
                }catch(Exception e){
+                   request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('error en el proceso');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
+                   //debe de direccionar a una pagina de errores e imprimir que pasó
                    out.println(e);
                }
             break;
@@ -139,10 +155,25 @@ public class CRUDprofesor extends HttpServlet {
                         RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
                         disp.forward(request, response);
                    }else{
-                       profesor profe=new profesor(numberu,namesu,lastFu,lastMu,passu,emailu,subjectsu);
-                       updateTeacher(profe,request,response);
+                       if(namesu.length()<=0 && lastFu.length()<=0 && lastMu.length() <=0 && passu.length()<=0 && emailu.length()<=0){
+                           request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('Debes de llenar los datos');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
+                       }else{
+                        profesor profe=new profesor(numberu,namesu,lastFu,lastMu,passu,emailu,subjectsu);
+                        updateTeacher(profe,request,response);
+                       }
                    }
                }catch(Exception e){
+                   request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('error en el proceso');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
                    out.println(e);
                }
             break;
@@ -208,7 +239,7 @@ public class CRUDprofesor extends HttpServlet {
         PrintWriter out=response.getWriter();
         profesorValidacion val = new profesorValidacion();
         boolean exito = val.newTeacherValidate(profe);
-        if(true){
+        if(exito){
             boolean sa = model.create(profe);
             if(sa){
                 request.setAttribute("code", "<script type=\"text/javascript\">\n" +
@@ -227,6 +258,12 @@ public class CRUDprofesor extends HttpServlet {
                         disp.forward(request, response);
             }
         }else{
+            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('Inserto un dato erroneo');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
             //imprimir el error en la validacion
         }
     }
@@ -235,7 +272,7 @@ public class CRUDprofesor extends HttpServlet {
         PrintWriter out=response.getWriter();
         profesorValidacion val = new profesorValidacion();
         boolean exito = val.newTeacherValidate(profe);
-        if(true){
+        if(exito){
             boolean sa = model.update(profe);
             if(sa){
                 request.setAttribute("code", "<script type=\"text/javascript\">\n" +
@@ -254,6 +291,12 @@ public class CRUDprofesor extends HttpServlet {
                         disp.forward(request, response);
             }
         }else{
+            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('Inserto un dato erroneo');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
             //imprimir el error en la validacion
         }
     }
@@ -280,6 +323,12 @@ public class CRUDprofesor extends HttpServlet {
                         disp.forward(request, response);
             }
         }else{
+            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('Inserto un dato erroneo');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
             //impirmir el error
         }
     }

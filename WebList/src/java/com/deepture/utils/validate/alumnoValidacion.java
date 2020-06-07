@@ -16,11 +16,26 @@ public class alumnoValidacion implements alumnoValDao{
 
     @Override
     public String newStudentsValidate(alumno al, String gr) {
-        return "ok";
+        String vnombre=al.getNombre();
+        String vcorreo=al.getCorreo();
+        String vappat =al.getApp();
+        String vapmat =al.getApm();
+        String vbol= String.valueOf(al.getBoleta());
+        if(vnombre.matches("^[A-Za-z\\s]+${1,44}") & vappat.matches("^[a-zA-Z]+${1,44}") & vapmat.matches("^[a-zA-Z]+${1,44}") & vbol.matches("^[0-9]+${1,10}+$")){
+            return "ok";
+        }else{
+            return "";
+        }
     }
 
     @Override
     public String validarBoleta(int boleta) {
-        return "ok";
+        String verifica=String.valueOf(boleta);
+        if(verifica.matches("^[0-9]+${1,10}+$")){
+            return "ok";
+        }else{
+            return "";
+        }
+        
     }
 }
