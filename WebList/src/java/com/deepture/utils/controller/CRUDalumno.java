@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.deepture.utils.controller;
-
 import com.deepture.utils.classdata.alumno;
 import com.deepture.utils.models.alumnoDaoImp;
 import com.deepture.utils.validate.alumnoValidacion;
@@ -81,7 +80,7 @@ public class CRUDalumno extends HttpServlet {
                     String lastNM = request.getParameter("apm");
                     String email = "email@.com";
                     String group = request.getParameter("grupo");
-                    if(group!="null" && boleta.length()>0 && names.length()>0 && lastNF.length()>0 && lastNM.length()>0){
+                    if(group!="null" && boleta.length()>0 && boleta.matches("^[0-9]+${1,10}+$") && names.length()>0 && lastNF.length()>0 && lastNM.length()>0){
                         alumno al = new alumno(Integer.parseInt(boleta),names,lastNF,lastNM,email);
                         newStudents(al, group, request, response);
                     }else{
@@ -111,7 +110,7 @@ public class CRUDalumno extends HttpServlet {
                     String lastNM = request.getParameter("apm");
                     String email = "email@.com";
                     String group = request.getParameter("grupo");
-                    if(group!="null" && boleta.length()>0 && names.length()>0 && lastNF.length()>0 && lastNM.length()>0){
+                    if(group!="null" && boleta.length()>0 && boleta.matches("^[0-9]+${1,10}+$") && names.length()>0 && lastNF.length()>0 && lastNM.length()>0){
                         alumno al = new alumno(Integer.parseInt(boleta),names,lastNF,lastNM,email);
                         updateStudents(al, group, request, response);
                     }else{

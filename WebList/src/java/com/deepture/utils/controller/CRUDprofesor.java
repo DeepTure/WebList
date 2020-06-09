@@ -206,6 +206,12 @@ public class CRUDprofesor extends HttpServlet {
                     changePassword(request, response);
                 } catch (Exception ex) {
                     out.println(ex);
+                    request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('error, debe ingresar numeros en el numero de empleado, y no excsesivamente grandes');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
                 }
             }
            break;
@@ -215,6 +221,12 @@ public class CRUDprofesor extends HttpServlet {
                     newEmail(request,response);
                 } catch (Exception ex) {
                    out.println(ex);
+                   request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+            "                               alert('error, debe ingresar numeros en el numero de empleado, y no excsesivamente grandes');\n" +
+            "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
                 }
             }
             break;

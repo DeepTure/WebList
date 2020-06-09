@@ -47,7 +47,7 @@ public class profesorValidacion implements profesorValDao{
         String vappa=profe.getApp();
         String vapma=profe.getApm();
         String vpass=profe.getPassword();
-        if(vnume.matches("^[0-9]+${1,10}+$") && vnomb.matches("^[A-Za-z\\s]+${1,44}") && vappa.matches("^[a-zA-Z]+${1,44}") && vapma.matches("^[a-zA-Z]+${1,44}") && vpass.matches("^[a-zA-Z0-9]+${1,44}")){
+        if(vnume.matches("^[0-9]+${1,10}+$") &&  vpass.matches("^[a-zA-Z0-9]+${1,44}")){
             return true;
         }else{
             return false;

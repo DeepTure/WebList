@@ -66,6 +66,12 @@ public class InicioSesionController extends HttpServlet {
                  pass = request.getParameter("pass");
             }catch(Exception e){
                 out.println(e);
+                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Ha introducido datos erroneos');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
+                            disp.forward(request, response);
             }
             profesorValidacion val = new profesorValidacion();
             administrador admin = new administrador(id,pass);

@@ -49,6 +49,12 @@ public class adminController extends HttpServlet {
                     changePassword(request, response);
                 } catch (Exception ex) {
                     out.println(ex);
+                    request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Ha introducido datos erroneos');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                            disp.forward(request, response);
                 }
             case "newEmail":
             {
@@ -56,6 +62,12 @@ public class adminController extends HttpServlet {
                     newEmail(request,response);
                 } catch (Exception ex) {
                    out.println(ex);
+                   request.setAttribute("code", "<script type=\"text/javascript\">\n" +
+                "                               alert('Ha introducido datos erroneos');\n" +
+                "                               </script>");
+                            //enviar ese request a la pagina jsp
+                            RequestDispatcher disp=request.getRequestDispatcher("/Admin.jsp");
+                            disp.forward(request, response);
                 }
             }
            break;
