@@ -42,12 +42,13 @@ public class profesorDaoImp implements profesorDaoApi{
                 ps.setString(2,materias[i]);
                 ps.executeUpdate();
             }
+            return true;
         }catch(Exception e){
             return false;
         }finally{
             ps.close();
+            cn.close();
         }
-        return true;
     }
 
     @Override
@@ -81,6 +82,7 @@ public class profesorDaoImp implements profesorDaoApi{
             return false;
         }finally{
             ps.close();
+            cn.close();
         } 
     }
 
@@ -103,6 +105,7 @@ public class profesorDaoImp implements profesorDaoApi{
            return false;
        }finally{
            ps.close();
+           cn.close();
        }
     }
 
@@ -112,18 +115,26 @@ public class profesorDaoImp implements profesorDaoApi{
        PreparedStatement ps = null;
        ResultSet rs=null;
 
-           ps = cn.prepareStatement("SELECT contraseña FROM profesores WHERE id_profesor = ?");
-           ps.setInt(1,profe.getNumeroE());
-           rs = ps.executeQuery();
-           if(rs.next()){
-                String pass = rs.getString(1);
-                if(pass.equals(profe.getPassword())){
-                    return true;
+           try{
+               ps = cn.prepareStatement("SELECT contraseña FROM profesores WHERE id_profesor = ?");
+                ps.setInt(1,profe.getNumeroE());
+                rs = ps.executeQuery();
+                if(rs.next()){
+                     String pass = rs.getString(1);
+                     if(pass.equals(profe.getPassword())){
+                         return true;
+                     }else{
+                         return false;
+                     }
                 }else{
                     return false;
                 }
-           }else{
+           }catch(Exception e){
+                e.printStackTrace();
                return false;
+           }finally{
+               cn.close();
+               ps.close();
            }
     }
 
