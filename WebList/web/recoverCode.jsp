@@ -99,39 +99,27 @@
 			<br>
 		</p>
 		<p class="atxt">
-			Para recuperar su contraseña llene los siguientes campos: 
+			Para recuperar su contraseña ingrese el codigo que se mandó a su correo: 
 		</p>
 		<p class="space">
 			<br>
 		</p>
                 <form method="get" action="InicioSesionController">
 			<p class="atxt">
-				Correo electronico:
+				Codigo:
 			</p>
 			<p class="space">
 				<br>
 			</p>
-			<input type="text" name="correo" class="inputtxt">
-			<p class="space">
-				<br>
-				<br>
-				<br>
-			</p>
-			<p class="atxt">
-				Número de empleado:
-			</p>
+			<input type="text" name="codeU" class="inputtxt">
 			<p class="space">
 				<br>
 			</p>
-			<input type="text" name="id" class="inputtxt">
-			<p class="space">
-				<br>
-			</p>
-			<p class="space">
-				<br>
-			</p>
-                        <input type="hidden" name="instruction" value="recover">
-			<input type="submit" name="Send" class="inputbutn int" value="Enviar código">
+                        <input type="hidden" name="instruction" value="recoverWithCode">
+                        <!-- Lo sé lo sé, hay una muy grave falla con la seguridad en este punto, pero es por facilidad, si lo quieres arreglar adelante -->
+                        <input type="hidden" name="codeO" value="<%=request.getAttribute("recoverCode")%>">
+                        <input type="hidden" name="status" value="<%=request.getAttribute("sts")%>">
+			<input type="submit" name="Send" class="inputbutn int" value="Enviar">
 		</form>
 		<input type="button" class="inputbutn int" value="Menú principal" style="margin-top: 20%; margin-left: 80%;" onclick="location.href='index.jsp'">
 	</div>

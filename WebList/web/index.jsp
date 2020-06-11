@@ -143,7 +143,7 @@
 				<div class="space">
 					<br>
 				</div>
-				<input type="button" id="Recover" value="Recuperar cuenta" class="inputbutn int" onclick="location.href='Recover.jsp'">
+                                <input type="button" id="Recover" value="Recuperar cuenta" class="inputbutn int" onclick="location.href='Recover.jsp'">
 			</form>
 		</div>	
             <script>

@@ -173,5 +173,29 @@ public class profesorDaoImp implements profesorDaoApi{
             ps.close();
         }
     }
+
+    @Override
+    public boolean checkEmail(String correo, int id)throws Exception {
+        Connection cn = connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try{
+            ps = cn.prepareStatement("SELECT correo FROM profesores WHERE id_profesor=?");
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                if(rs.getString(1).equals(correo)){
+                    return true;
+                }
+            }
+            return false;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }finally{
+            cn.close();
+            ps.close();
+        }
+    }
     
 }

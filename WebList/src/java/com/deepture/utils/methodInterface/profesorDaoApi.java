@@ -23,4 +23,6 @@ public interface profesorDaoApi {
     public boolean chPsswrd(String ps1, String ps2, int id)throws Exception;
     
     public boolean newEmailSave(String email, int id)throws Exception;
+    
+    public boolean checkEmail(String correo, int id)throws Exception;
 }

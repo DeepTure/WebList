@@ -5,7 +5,13 @@ package com.deepture.ejemplo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Properties;
 import javax.annotation.Resource;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -67,6 +73,39 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         //aquí meter todo el codigo necesario, para las acciones PERO no ensuciar, 
         //Solo manden a llamar metodos
+        PrintWriter out=response.getWriter();
+        Properties propiedad = new Properties();
+        propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+        propiedad.setProperty("mail.smtp.starttls.enable", "true");
+        propiedad.setProperty("mail.smtp.port", "587");
+        propiedad.setProperty("mail.smtp.auth","true");
+        
+        Session sesion = Session.getDefaultInstance(propiedad);
+        String correoEnvia = "jafetkevin575@gmail.com";
+        String contrasena = "nG39!5065BGNvH";
+        String receptor = "moranorozcokevinjafet@gmail.com";
+        String asunto = "recuperacion de contraseña";
+        String mensaje = "prueba uno xdxd";
+        
+        MimeMessage mail = new MimeMessage(sesion);
+        
+        try {
+            mail.setFrom(new InternetAddress (correoEnvia));
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress (receptor));
+            mail.setSubject(asunto);
+            mail.setText(mensaje);
+            
+            Transport transportar = sesion.getTransport("smtp");
+            transportar.connect(correoEnvia,contrasena);
+            transportar.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));          
+            transportar.close();
+            
+            out.println("all ok");
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            out.println(ex);
+        }
     }
 
     

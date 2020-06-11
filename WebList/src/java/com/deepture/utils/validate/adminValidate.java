@@ -29,5 +29,10 @@ public class adminValidate implements adminValdao{
     public boolean newEmailValidate(String email, int id) {
         return true;
     }
+
+    @Override
+    public boolean recoverPassword(String correo, String id) {
+        return true;
+    }
     
 }
