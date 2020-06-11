@@ -49,7 +49,18 @@ public class CRUDalumno extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out=response.getWriter();
-        
+        if(request.getAttribute("load")=="t"){
+           out.println("entra");
+                try {
+                    List<alumno> alumnos=model.getAll(request, response);
+                    request.setAttribute("alumnosD", alumnos);
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                        disp.forward(request, response);
+                } catch (Exception ex) {
+                    out.println(ex);
+                }
+       }
     }
 
 

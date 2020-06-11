@@ -103,11 +103,11 @@ public class InicioSesionController extends HttpServlet {
                                 RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
                                 disp.forward(request, response);
                         }else if(codeOriginal.equals(codeUser) && status.equals("administrador")){
+                            request.setAttribute("load","t");
                             request.setAttribute("code", "<script type=\"text/javascript\">\n" +
                     "                               alert('Bienvenido, se le recomienda cambie su contraseña');\n" +
                     "                               </script>");
-                                //enviar ese request a la pagina jsp
-                                RequestDispatcher disp=request.getRequestDispatcher("/HomeAdmin.jsp");
+                                RequestDispatcher disp=request.getRequestDispatcher("/CRUDalumno");
                                 disp.forward(request, response);
                         }else{
                             request.setAttribute("code", "<script type=\"text/javascript\">\n" +
@@ -263,7 +263,7 @@ public class InicioSesionController extends HttpServlet {
         String contrasena = "nG39!5065BGNvH";
         String receptor = correo;
         String asunto = "Rcuperacion de contraseña";
-        String mensaje = ", alguien intenta cambiar su contraseña, en caso de no ser usted ponerse en contacto con el administrador, CODIGO: "+getNewCode();
+        String mensaje = "alguien intenta cambiar su contraseña, en caso de no ser usted ponerse en contacto con el administrador, CODIGO: "+getNewCode();
         
         MimeMessage mail = new MimeMessage(sesion);
         
