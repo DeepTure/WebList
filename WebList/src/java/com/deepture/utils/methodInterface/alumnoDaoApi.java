@@ -5,7 +5,9 @@
  */
 package com.deepture.utils.methodInterface;
 
+import com.deepture.utils.classdata.Inasistencias;
 import com.deepture.utils.classdata.alumno;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -28,4 +30,10 @@ public interface alumnoDaoApi {
     public List<alumno> getStudentsFrom(List<alumno> alumnos, String parameter)throws Exception;
     
     public boolean registryAssistance(String[] asistio, String mat, int idp, String gr, Date fecha,HttpServletRequest request, HttpServletResponse response)throws Exception;
+    
+    public List<Inasistencias> registryGet(int idp, String mat)throws Exception;
+    
+    public boolean registryDelete(Inasistencias inasistencia)throws Exception;
+    
+    public boolean registryUpdate(Inasistencias OldAsistencia,Inasistencias NewAsistencia)throws Exception;
 }
