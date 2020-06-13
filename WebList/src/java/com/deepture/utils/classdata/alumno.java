@@ -10,6 +10,7 @@ package com.deepture.utils.classdata;
  * @author JAFET
  */
 public class alumno {
+
     private int boleta;
     private String nombre;
     private String app;

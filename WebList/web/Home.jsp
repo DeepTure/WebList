@@ -225,8 +225,8 @@
                                 <td><%=a.getBoleta()%></td><td><%=a.getNombre()%> <%=a.getApp()%></td><td><input type="checkbox" name="asistencia" value="<%=a.getBoleta()%>"></td>
                             </tr>
                             <%}
-                                                entra = true;
-                                            } else {%>
+                                entra = true;
+                            } else {%>
                             <tr>
                                 <td>215</td><td>juan</td><td><input type="checkbox"></td>
                             </tr>

@@ -18,22 +18,22 @@ import javax.servlet.http.HttpServletResponse;
  * @author JAFET
  */
 public interface alumnoDaoApi {
-    
-    boolean create(alumno al,String gro)throws Exception;
-    
-    boolean update(alumno al)throws Exception;
-    
-    boolean delete(int boleta)throws Exception;
-    
-    List<alumno> getAll (HttpServletRequest request, HttpServletResponse response)throws Exception;
-    
-    public List<alumno> getStudentsFrom(List<alumno> alumnos, String parameter)throws Exception;
-    
-    public boolean registryAssistance(String[] asistio, String mat, int idp, String gr, Date fecha,HttpServletRequest request, HttpServletResponse response)throws Exception;
-    
-    public List<Inasistencias> registryGet(int idp, String mat)throws Exception;
-    
-    public boolean registryDelete(Inasistencias inasistencia)throws Exception;
-    
-    public boolean registryUpdate(Inasistencias OldAsistencia,Inasistencias NewAsistencia)throws Exception;
+
+    boolean create(alumno al, String gro) throws Exception;
+
+    boolean update(alumno al) throws Exception;
+
+    boolean delete(int boleta) throws Exception;
+
+    List<alumno> getAll(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+    public List<alumno> getStudentsFrom(List<alumno> alumnos, String parameter) throws Exception;
+
+    public boolean registryAssistance(String[] asistio, String mat, int idp, String gr, Date fecha, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+    public List<Inasistencias> registryGet(int idp, String mat) throws Exception;
+
+    public boolean registryDelete(Inasistencias inasistencia) throws Exception;
+
+    public boolean registryUpdate(Inasistencias OldAsistencia, Inasistencias NewAsistencia) throws Exception;
 }

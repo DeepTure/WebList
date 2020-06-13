@@ -10,6 +10,7 @@ package com.deepture.utils.classdata;
  * @author JAFET
  */
 public class administrador {
+
     //tiene sobrecarga de metodos
     private int id;
     private String nombre;

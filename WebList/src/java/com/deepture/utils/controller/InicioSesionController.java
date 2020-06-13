@@ -37,151 +37,150 @@ import javax.sql.DataSource;
  */
 @WebServlet(name = "InicioSesionController", urlPatterns = {"/InicioSesionController"})
 public class InicioSesionController extends HttpServlet {
+
     private profesorDaoImp model;
     private adminDaoImp model2;
     //esta variable tendrá el codigo para entarar de nuevo a su cuenta
     private static String code = null;
-   
-    @Resource(name="jdbc/Data")
+
+    @Resource(name = "jdbc/Data")
     private DataSource connection;
 
     @Override
     public void init() throws ServletException {
-        super.init(); 
-        try{
+        super.init();
+        try {
             model2 = new adminDaoImp(connection);
             model = new profesorDaoImp(connection);
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new ServletException(e);
         }
     }
-    
-    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            PrintWriter out=response.getWriter();
-            String ins = request.getParameter("instruction");
-            switch(ins){
-                case "recover":
-                    //estos datos se deben validar de manera general, tanto para el profesor como para el admnistrador
-                    //yo instanciaré la clase administrador pero validar para ambos
-                    adminValidate val = new adminValidate();
-                    boolean exito = val.recoverPassword(request.getParameter("correo"),request.getParameter("id"));
-                    //si tiene exito
-                    if(exito){
-                        try {
-                            sendEmail(request,response);
-                        } catch (Exception ex) {
-                            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-                "                               alert('Ha ocurrido un error desconocido');\n" +
-                "                               </script>");
-                            //enviar ese request a la pagina jsp
-                            RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                            disp.forward(request, response);
-                            
-                            ex.printStackTrace();
-                        }
-                    }else{
-                        request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-                "                               alert('Ha introducido datos erroneos');\n" +
-                "                               </script>");
-                            //enviar ese request a la pagina jsp
-                            RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                            disp.forward(request, response);
-                    }
-                case "recoverWithCode":
-                    String codeOriginal=request.getParameter("codeO"),codeUser=request.getParameter("codeU");
-                    String status = request.getParameter("status");
-                    try{
-                        if(codeOriginal.equals(codeUser) && status.equals("profesor")){
-                            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-                    "                               alert('Bienvenido, se le recomienda cambie su contraseña');\n" +
-                    "                               </script>");
-                                //enviar ese request a la pagina jsp
-                                RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
-                                disp.forward(request, response);
-                        }else if(codeOriginal.equals(codeUser) && status.equals("administrador")){
-                            request.setAttribute("load","t");
-                            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-                    "                               alert('Bienvenido, se le recomienda cambie su contraseña');\n" +
-                    "                               </script>");
-                                RequestDispatcher disp=request.getRequestDispatcher("/CRUDalumno");
-                                disp.forward(request, response);
-                        }else{
-                            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-                    "                               alert('El codigo ingresado no es correcto');\n" +
-                    "                               </script>");
-                                //enviar ese request a la pagina jsp
-                                RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                                disp.forward(request, response);
-                        }
-                    }catch(Exception e){
-                        out.println(e);
-                    }
-            }
-    }
+        PrintWriter out = response.getWriter();
+        String ins = request.getParameter("instruction");
+        switch (ins) {
+            case "recover":
+                //estos datos se deben validar de manera general, tanto para el profesor como para el admnistrador
+                //yo instanciaré la clase administrador pero validar para ambos
+                adminValidate val = new adminValidate();
+                boolean exito = val.recoverPassword(request.getParameter("correo"), request.getParameter("id"));
+                //si tiene exito
+                if (exito) {
+                    try {
+                        sendEmail(request, response);
+                    } catch (Exception ex) {
+                        request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                                + "                               alert('Ha ocurrido un error desconocido');\n"
+                                + "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+                        disp.forward(request, response);
 
+                        ex.printStackTrace();
+                    }
+                } else {
+                    request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                            + "                               alert('Ha introducido datos erroneos');\n"
+                            + "                               </script>");
+                    //enviar ese request a la pagina jsp
+                    RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+                    disp.forward(request, response);
+                }
+            case "recoverWithCode":
+                String codeOriginal = request.getParameter("codeO"),
+                 codeUser = request.getParameter("codeU");
+                String status = request.getParameter("status");
+                try {
+                    if (codeOriginal.equals(codeUser) && status.equals("profesor")) {
+                        request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                                + "                               alert('Bienvenido, se le recomienda cambie su contraseña');\n"
+                                + "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+                        disp.forward(request, response);
+                    } else if (codeOriginal.equals(codeUser) && status.equals("administrador")) {
+                        request.setAttribute("load", "t");
+                        request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                                + "                               alert('Bienvenido, se le recomienda cambie su contraseña');\n"
+                                + "                               </script>");
+                        RequestDispatcher disp = request.getRequestDispatcher("/CRUDalumno");
+                        disp.forward(request, response);
+                    } else {
+                        request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                                + "                               alert('El codigo ingresado no es correcto');\n"
+                                + "                               </script>");
+                        //enviar ese request a la pagina jsp
+                        RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+                        disp.forward(request, response);
+                    }
+                } catch (Exception e) {
+                    out.println(e);
+                }
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            PrintWriter out=response.getWriter();
-            int id=0;
-            String pass="";
-            try{
-                 id = Integer.parseInt(request.getParameter("user"));
-                 pass = request.getParameter("pass");
-            }catch(Exception e){
-                out.println(e);
-                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-                "                               alert('Ha introducido datos erroneos');\n" +
-                "                               </script>");
-                            //enviar ese request a la pagina jsp
-                            RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                            disp.forward(request, response);
-            }
-            profesorValidacion val = new profesorValidacion();
-            administrador admin = new administrador(id,pass);
-            profesor profe = new profesor(id,pass);
-            //validamos las entradas antes de que lleguen a la bbdd+
-            if(!val.logInValidate(profe)){
-                     request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-            "                               alert('Sin acceso, los datos son erroneos');\n" +
-            "                               </script>");
-                        //enviar ese request a la pagina jsp
-                        RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                        disp.forward(request, response);
-            }
-            //este metodo de validacion se encuntra declarado en este servlet
-            if(!adminLoginValidate(admin)){
-                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-            "                               alert('Sin acceso, los datos son erroneos');\n" +
-            "                               </script>");
-                        //enviar ese request a la pagina jsp
-                        RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                        disp.forward(request, response);
-            }
-            
-            //si los datos son correctos entonces
+        PrintWriter out = response.getWriter();
+        int id = 0;
+        String pass = "";
         try {
-            if(model2.logIn(admin, response)){
-                request.setAttribute("load","t");
-                RequestDispatcher disp=request.getRequestDispatcher("/CRUDalumno");
+            id = Integer.parseInt(request.getParameter("user"));
+            pass = request.getParameter("pass");
+        } catch (Exception e) {
+            out.println(e);
+            request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                    + "                               alert('Ha introducido datos erroneos');\n"
+                    + "                               </script>");
+            //enviar ese request a la pagina jsp
+            RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+            disp.forward(request, response);
+        }
+        profesorValidacion val = new profesorValidacion();
+        administrador admin = new administrador(id, pass);
+        profesor profe = new profesor(id, pass);
+        //validamos las entradas antes de que lleguen a la bbdd+
+        if (!val.logInValidate(profe)) {
+            request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                    + "                               alert('Sin acceso, los datos son erroneos');\n"
+                    + "                               </script>");
+            //enviar ese request a la pagina jsp
+            RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+            disp.forward(request, response);
+        }
+        //este metodo de validacion se encuntra declarado en este servlet
+        if (!adminLoginValidate(admin)) {
+            request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                    + "                               alert('Sin acceso, los datos son erroneos');\n"
+                    + "                               </script>");
+            //enviar ese request a la pagina jsp
+            RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+            disp.forward(request, response);
+        }
+
+        //si los datos son correctos entonces
+        try {
+            if (model2.logIn(admin, response)) {
+                request.setAttribute("load", "t");
+                RequestDispatcher disp = request.getRequestDispatcher("/CRUDalumno");
                 disp.forward(request, response);
-            }else if(model.logIn(profe)){
-                        request.setAttribute("id_profe",id);
-                        request.setAttribute("gr","null");
-                        RequestDispatcher disp=request.getRequestDispatcher("/Home.jsp");
-                        disp.forward(request, response);
-            }else{
-                 request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-            "                               alert('Sin acceso');\n" +
-            "                               </script>");
-                        //enviar ese request a la pagina jsp
-                        RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                        disp.forward(request, response);
+            } else if (model.logIn(profe)) {
+                request.setAttribute("id_profe", id);
+                request.setAttribute("gr", "null");
+                RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+                disp.forward(request, response);
+            } else {
+                request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                        + "                               alert('Sin acceso');\n"
+                        + "                               </script>");
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+                disp.forward(request, response);
             }
         } catch (Exception ex) {
             out.println(ex);
@@ -203,50 +202,50 @@ public class InicioSesionController extends HttpServlet {
         return true;
     }
 
-    private void sendEmail(HttpServletRequest request, HttpServletResponse response)throws Exception {
-        PrintWriter out=response.getWriter();
+    private void sendEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        PrintWriter out = response.getWriter();
         String correo = request.getParameter("correo");
         int id = Integer.parseInt(request.getParameter("id"));
-        
-        if(model.checkEmail(correo,id)){
-            boolean exito = send(correo,id);
-            if(exito){
+
+        if (model.checkEmail(correo, id)) {
+            boolean exito = send(correo, id);
+            if (exito) {
                 request.setAttribute("recoverCode", code);
                 request.setAttribute("sts", "profesor");
-                        //enviar ese request a la pagina jsp
-                        RequestDispatcher disp=request.getRequestDispatcher("/recoverCode.jsp");
-                        disp.forward(request, response);
-            }else{
-                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-            "                               alert('Ha ocurrdo un error al intentar mandar el correo, vuelvalo a intentar o pongase en contacto con el administrador');\n" +
-            "                               </script>");
-                        //enviar ese request a la pagina jsp
-                        RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                        disp.forward(request, response);
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp = request.getRequestDispatcher("/recoverCode.jsp");
+                disp.forward(request, response);
+            } else {
+                request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                        + "                               alert('Ha ocurrdo un error al intentar mandar el correo, vuelvalo a intentar o pongase en contacto con el administrador');\n"
+                        + "                               </script>");
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+                disp.forward(request, response);
             }
-        }else if(model2.checkEmail(correo, id)){
-            boolean exito = send(correo,id);
-            if(exito){
+        } else if (model2.checkEmail(correo, id)) {
+            boolean exito = send(correo, id);
+            if (exito) {
                 request.setAttribute("recoverCode", code);
                 request.setAttribute("sts", "administrador");
-                        //enviar ese request a la pagina jsp
-                        RequestDispatcher disp=request.getRequestDispatcher("/recoverCode.jsp");
-                        disp.forward(request, response);
-            }else{
-                request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-            "                               alert('Ha ocurrdo un error al intentar mandar el correo');\n" +
-            "                               </script>");
-                        //enviar ese request a la pagina jsp
-                        RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                        disp.forward(request, response);
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp = request.getRequestDispatcher("/recoverCode.jsp");
+                disp.forward(request, response);
+            } else {
+                request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                        + "                               alert('Ha ocurrdo un error al intentar mandar el correo');\n"
+                        + "                               </script>");
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+                disp.forward(request, response);
             }
-        }else{
-            request.setAttribute("code", "<script type=\"text/javascript\">\n" +
-            "                               alert('Ingreso datos no registrados anteriormente');\n" +
-            "                               </script>");
-                        //enviar ese request a la pagina jsp
-                        RequestDispatcher disp=request.getRequestDispatcher("/index.jsp");
-                        disp.forward(request, response);
+        } else {
+            request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                    + "                               alert('Ingreso datos no registrados anteriormente');\n"
+                    + "                               </script>");
+            //enviar ese request a la pagina jsp
+            RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+            disp.forward(request, response);
         }
     }
 
@@ -256,28 +255,28 @@ public class InicioSesionController extends HttpServlet {
         propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
         propiedad.setProperty("mail.smtp.starttls.enable", "true");
         propiedad.setProperty("mail.smtp.port", "587");
-        propiedad.setProperty("mail.smtp.auth","true");
-        
+        propiedad.setProperty("mail.smtp.auth", "true");
+
         Session sesion = Session.getDefaultInstance(propiedad);
         String correoEnvia = "jafetkevin575@gmail.com";
         String contrasena = "nG39!5065BGNvH";
         String receptor = correo;
         String asunto = "Rcuperacion de contraseña";
-        String mensaje = "alguien intenta cambiar su contraseña, en caso de no ser usted ponerse en contacto con el administrador, CODIGO: "+getNewCode();
-        
+        String mensaje = "alguien intenta cambiar su contraseña, en caso de no ser usted ponerse en contacto con el administrador, CODIGO: " + getNewCode();
+
         MimeMessage mail = new MimeMessage(sesion);
-        
+
         try {
-            mail.setFrom(new InternetAddress (correoEnvia));
-            mail.addRecipient(Message.RecipientType.TO, new InternetAddress (receptor));
+            mail.setFrom(new InternetAddress(correoEnvia));
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(receptor));
             mail.setSubject(asunto);
             mail.setText(mensaje);
-            
+
             Transport transportar = sesion.getTransport("smtp");
-            transportar.connect(correoEnvia,contrasena);
-            transportar.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));          
+            transportar.connect(correoEnvia, contrasena);
+            transportar.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
             transportar.close();
-            
+
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -286,14 +285,14 @@ public class InicioSesionController extends HttpServlet {
     }
 
     private String getNewCode() {
-        Random r=new Random();
+        Random r = new Random();
         String one = Integer.toString(r.nextInt(9));
         String two = Integer.toString(r.nextInt(9));
         String three = Integer.toString(r.nextInt(9));
         String four = Integer.toString(r.nextInt(9));
-        String aux = one+two+three+four;
+        String aux = one + two + three + four;
         code = aux;
-        
+
         return aux;
     }
 

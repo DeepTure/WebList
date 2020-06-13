@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author JAFET
  */
 public interface adminDaoApi {
-    boolean logIn(administrador admin, HttpServletResponse response)throws Exception;
-    
-    public boolean checkEmail(String correo, int id)throws Exception;
+
+    boolean logIn(administrador admin, HttpServletResponse response) throws Exception;
+
+    public boolean checkEmail(String correo, int id) throws Exception;
 }

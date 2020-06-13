@@ -12,13 +12,14 @@ import com.deepture.utils.classdata.profesor;
  * @author JAFET
  */
 public interface profesorValDao {
-    boolean newTeacherValidate(profesor profe)throws Exception;
-    
-    boolean numberEmployeeValidate(int numberE)throws Exception;
-    
-    boolean logInValidate(profesor profe)throws Exception;
-    
+
+    boolean newTeacherValidate(profesor profe) throws Exception;
+
+    boolean numberEmployeeValidate(int numberE) throws Exception;
+
+    boolean logInValidate(profesor profe) throws Exception;
+
     public boolean passwordAndIdValidate(String ps1, String ps2, int id) throws Exception;
-    
+
     public boolean newEmailValidate(String email, int id);
 }

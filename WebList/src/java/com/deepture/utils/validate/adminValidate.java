@@ -11,16 +11,16 @@ import com.deepture.utils.validate.Dao.adminValdao;
  *
  * @author JAFET
  */
-public class adminValidate implements adminValdao{
+public class adminValidate implements adminValdao {
 
     @Override
-    public boolean passwordAndIdValidate(String ps1, String ps2, int id)throws Exception{
-        String vps1=ps1;
-        String vps2=ps2;
-        String vid =String.valueOf(id);
-        if(vps1.matches("^[a-zA-Z0-9]+${1,44}") && vps2.matches("^[a-zA-Z0-9]+${1,44}") && vid.matches("^[0-9]+${1,44}+$")){
+    public boolean passwordAndIdValidate(String ps1, String ps2, int id) throws Exception {
+        String vps1 = ps1;
+        String vps2 = ps2;
+        String vid = String.valueOf(id);
+        if (vps1.matches("^[a-zA-Z0-9]+${1,44}") && vps2.matches("^[a-zA-Z0-9]+${1,44}") && vid.matches("^[0-9]+${1,44}+$")) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -34,5 +34,5 @@ public class adminValidate implements adminValdao{
     public boolean recoverPassword(String correo, String id) {
         return true;
     }
-    
+
 }

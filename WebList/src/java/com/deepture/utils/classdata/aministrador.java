@@ -10,6 +10,7 @@ package com.deepture.utils.classdata;
  * @author JAFET
  */
 public class aministrador {
+
     private int id_admin;
     private String nombre;
     private String contrasena;
@@ -56,5 +57,5 @@ public class aministrador {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
+
 }

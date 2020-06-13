@@ -12,6 +12,7 @@ import java.util.Date;
  * @author kcram
  */
 public class Inasistencias {
+
     private int boleta;
     private String id_materia;
     private int id_maestro;
