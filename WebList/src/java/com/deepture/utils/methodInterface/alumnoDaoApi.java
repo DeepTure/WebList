@@ -31,9 +31,9 @@ public interface alumnoDaoApi {
 
     public boolean registryAssistance(String[] asistio, String mat, int idp, String gr, Date fecha, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-    public List<Inasistencias> registryGet(int idp, String mat) throws Exception;
+    public List<Inasistencias> registryGet(int idp, String mat,String gr) throws Exception;
 
     public boolean registryDelete(Inasistencias inasistencia) throws Exception;
 
-    public boolean registryUpdate(Inasistencias OldAsistencia, Inasistencias NewAsistencia) throws Exception;
+    public boolean registryUpdate(Inasistencias inasistencia) throws Exception;
 }

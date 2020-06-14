@@ -1,9 +1,11 @@
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%-- 
     Document   : Home
     Created on : 27/05/2020, 03:47:37 PM
     Author     : crist
 --%>
 
+<%@page import="com.deepture.utils.classdata.Inasistencias"%>
 <%@page import="java.util.Date"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
@@ -26,6 +28,8 @@
         } else {
             session.setAttribute("id_p", id);
         }
+        List<alumno> faltados = (List<alumno>) request.getAttribute("faltados");
+        List<Inasistencias> faltas = (List<Inasistencias>) request.getAttribute("faltas");
         %>
         <title>
             WebList
@@ -193,15 +197,19 @@
                         $(document).ready(function () {
                             $('#mat1').click(function () {
                                 document.getElementById('command').value = 'PSW';
+                                document.getElementById('command2').value = 'PSW';
                             });
                             $('#mat2').click(function () {
                                 document.getElementById('command').value = 'TPPC';
+                                document.getElementById('command2').value = 'TPPC';
                             });
                             $('#mat3').click(function () {
                                 document.getElementById('command').value = 'BBDD';
+                                document.getElementById('command2').value = 'BBDD';
                             });
                             $('#mat4').click(function () {
                                 document.getElementById('command').value = 'LPTI';
+                                document.getElementById('command2').value = 'LPTI';
                             });
                         });
                     </script>
@@ -249,13 +257,79 @@
                         <p class="space">
                             <br>
                         </p>
-                        <input type="button" name="delete" value="Borrar" id="btn" class="inputbutn int">
+                        </form>
+                        <%
+                            if (faltas == null) {
+                        %>
+                        <form action="CRUDalumno" method="post">
+                            <input type="hidden" name="gr" value="<%=request.getAttribute("gr")%>">
+                            <input type="hidden" name="idpr" value="<%=id%>">
+                            <input type="hidden" name="materia" id="command2" value="null">
+                            <input type="hidden" name="instruction" value="getFalt">
+                            <input type="submit" name="delete" value="Revisar ultimo registro" id="btn" class="inputbutn int">
+                        </form>
                     </div>
+                    <%
+                    } else if (faltas.isEmpty()) {
+                    %>
+                    <p class="atxt">
+                        No hay faltas actualmente.
+                    </p>
+                    <%
+                    } else {
+                    %>
+                    <p class="atxt">
+                        Faltas del dia de hoy.
+                    </p>
+                    <table border="2">
+                        <tr>
+                            <td>Boleta</td><td>Nombre</td><td>Accion</td>
+                        </tr>
+                        <%
+                        %>
+                        <%for (Inasistencias i : faltas) {
+                                for (alumno a : faltados) {
+                                    if (i.getBoleta() == a.getBoleta()) {
+                        %>
+                        <tr>
+                        <form action="CRUDalumno" method="post">
+                            <input type="hidden" name="gr" value="<%=i.getGrupo()%>">
+                            <input type="hidden" name="idpr" value="<%=i.getId_maestro()%>">
+                            <input type="hidden" name="materia" value="<%=i.getId_materia()%>">
+                            <input type="hidden" name="boleta" value="<%=i.getBoleta()%>">
+                            <input type="hidden" name="dia" value="<%=i.getDia()%>">
+                            <input type="hidden" name="instruction" value="eliminarFal">
+                            <td><%=a.getBoleta()%></td><td><%=a.getNombre()%> <%=a.getApp()%></td><td><input type="submit" name="" value="Borrar" id="btn" class="inputbutn int"></td>
+                        </form>
+                        </tr>
+                        <%}
+                                }
+                            }
+                            Inasistencias i = faltas.get(0);
+                        %>
+                    </table>
+                    <br>
+                    <p class="atxt">
+                        Insertar nueva falta.
+                    </p>
+                    <form action="CRUDalumno" method="post">
+                        <input type="hidden" name="gr" value="<%=i.getGrupo()%>">
+                        <input type="hidden" name="idpr" value="<%=i.getId_maestro()%>">
+                        <input type="hidden" name="materia" value="<%=i.getId_materia()%>">
+                        <input type="hidden" name="dia" value="<%=i.getDia()%>">
+                        <label for="bol">Numero de Boleta</label>
+                        <input type="text" id="bol" name="boleta" class="inputtxt"/>
+                        <input type="hidden" name="instruction" value="añadirFal">
+                        <br>
+                        <input type="submit" name="" value="Guardar" id="btn" class="inputbutn int"/>
+                    </form>
+                    <%
+                        }%>
+
                     <p class="space">
                         <br>
                     </p>
                 </div>
-            </form>
         </div>
 
         <!-- aqui apareceran las listas de los profesores
@@ -300,5 +374,11 @@
         </script>
 
     </body>
+    <%
+        if (request.getAttribute("code") != null) {
+    %>
     <%=request.getAttribute("code")%>
+    <%
+        }
+    %>
 </html>

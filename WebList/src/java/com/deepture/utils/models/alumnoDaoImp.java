@@ -13,10 +13,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -208,21 +211,19 @@ public class alumnoDaoImp implements alumnoDaoApi {
     }
 
     @Override
-    public List<Inasistencias> registryGet(int idp, String mat) throws Exception {
+    public List<Inasistencias> registryGet(int idp, String mat, String gr) throws Exception {
         Connection cn = connection.getConnection();
         PreparedStatement ps = null;
         List<Inasistencias> faltas = new ArrayList();
         ResultSet rs = null;
         try {
-            LocalDate dia = LocalDate.now();
-            ZonedDateTime inicioDia = ZonedDateTime.of(dia.atTime(0, 0), ZoneId.systemDefault());
-            ZonedDateTime finDia = ZonedDateTime.of(dia.atTime(23, 59), ZoneId.systemDefault());
-
-            ps = cn.prepareStatement("SELECT * FROM inasistencias WHERE id_maestro=? AND id_materia=? AND (dia BETWEEN ? AND ?)");
+            java.util.Date utilDate = new Date();
+            java.sql.Date fechaconvertida = new java.sql.Date(utilDate.getTime());
+            ps = cn.prepareStatement("SELECT * FROM inasistencias WHERE id_maestro=? AND id_materia=? AND grupo=? AND dia=?");
             ps.setInt(1, idp);
             ps.setString(2, mat);
-            ps.setDate(3, new java.sql.Date(inicioDia.toInstant().getEpochSecond()));
-            ps.setDate(4, new java.sql.Date(finDia.toInstant().getEpochSecond()));
+            ps.setString(3, gr);
+            ps.setDate(4, fechaconvertida);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Inasistencias falta = new Inasistencias();
@@ -230,9 +231,12 @@ public class alumnoDaoImp implements alumnoDaoApi {
                 falta.setId_materia(rs.getString("id_materia"));
                 falta.setId_maestro(rs.getInt("id_maestro"));
                 falta.setGrupo(rs.getString("grupo"));
-                Date hora = new Date(rs.getDate("dia").getTime());
-                falta.setDia(hora);
-                falta.setHora(hora);
+                java.util.Date hoy = rs.getDate("dia");
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(hoy);
+                calendar.add(Calendar.DAY_OF_YEAR, 1);
+                falta.setHora(new java.sql.Date(calendar.getTime().getTime()));
+                falta.setDia(new java.sql.Date(calendar.getTime().getTime()));
                 faltas.add(falta);
             }
             return faltas;
@@ -266,24 +270,63 @@ public class alumnoDaoImp implements alumnoDaoApi {
     }
 
     @Override
-    public boolean registryUpdate(Inasistencias OldAsistencia, Inasistencias NewAsistencia) throws Exception {
+    public boolean registryUpdate(Inasistencias inasistencia) throws Exception {
+        if (checkExistence(inasistencia)) {
+            Connection cn = connection.getConnection();
+            PreparedStatement ps = null;
+            try {
+                ps = cn.prepareStatement("INSERT INTO inasistencias VALUES(?,?,?,?,?,?)");
+                ps.setInt(1, inasistencia.getBoleta());
+                ps.setString(2, inasistencia.getId_materia());
+                ps.setInt(3, inasistencia.getId_maestro());
+                ps.setString(4, inasistencia.getGrupo());
+                ps.setDate(5, new java.sql.Date(inasistencia.getDia().getTime()));
+                ps.setDate(6, new java.sql.Date(inasistencia.getDia().getTime()));
+                ps.executeUpdate();
+                return true;
+            } catch (Exception e) {
+                return false;
+            } finally {
+                ps.close();
+                cn.close();
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkExistence(Inasistencias falta) throws Exception {
         Connection cn = connection.getConnection();
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
-            ps = cn.prepareStatement("UPDATE inasistencias SET boleta=?, id_maestro=?, id_materia=?, grupo=?, dia=?, hora=? WHERE boleta=? AND  id_maestro=? AND id_materia=? AND grupo=? AND dia=? LIMIT 1");
-            ps.setInt(1, NewAsistencia.getBoleta());
-            ps.setInt(2, NewAsistencia.getId_maestro());
-            ps.setString(3, NewAsistencia.getId_materia());
-            ps.setString(4, NewAsistencia.getGrupo());
-            ps.setDate(5, new java.sql.Date(NewAsistencia.getDia().getTime()));
-            ps.setDate(6, new java.sql.Date(NewAsistencia.getDia().getTime()));
-            ps.setInt(7, OldAsistencia.getBoleta());
-            ps.setInt(8, OldAsistencia.getId_maestro());
-            ps.setString(9, OldAsistencia.getId_materia());
-            ps.setString(10, OldAsistencia.getGrupo());
-            ps.setDate(11, new java.sql.Date(OldAsistencia.getDia().getTime()));
-            ps.executeUpdate();
-            return true;
+            ps = cn.prepareStatement("SELECT * FROM alumno WHERE boleta=?");
+            ps.setInt(1, falta.getBoleta());
+            rs = ps.executeQuery();
+            if (!rs.next()) {
+                return false;
+            } else {
+                ps = cn.prepareStatement("SELECT * FROM dalumno_grupo WHERE Alumno_Boleta=? AND CGrupo_id_grupo=?");
+                ps.setInt(1, falta.getBoleta());
+                ps.setString(2, falta.getGrupo());
+                rs = ps.executeQuery();
+                if (!rs.next()) {
+                    return false;
+                } else {
+                    ps = cn.prepareStatement("SELECT * FROM inasistencias WHERE boleta=? AND id_maestro=? AND id_materia=? AND grupo=? AND dia=?");
+                    ps.setInt(1, falta.getBoleta());
+                    ps.setInt(2, falta.getId_maestro());
+                    ps.setString(3, falta.getId_materia());
+                    ps.setString(4, falta.getGrupo());
+                    ps.setDate(5, new java.sql.Date(falta.getDia().getTime()));
+                    rs = ps.executeQuery();
+                    if(!rs.next()){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }
         } catch (Exception e) {
             return false;
         } finally {

@@ -5,11 +5,14 @@
  */
 package com.deepture.utils.controller;
 
+import com.deepture.utils.classdata.Inasistencias;
 import com.deepture.utils.classdata.alumno;
 import com.deepture.utils.models.alumnoDaoImp;
 import com.deepture.utils.validate.alumnoValidacion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -20,7 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.util.Date;
-import javax.servlet.http.Cookie;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -199,13 +203,36 @@ public class CRUDalumno extends HttpServlet {
                     }
                 }
                 break;
-
+                case "getFalt": {
+                    try {
+                        getAssistance(request, response);
+                    } catch (Exception ex) {
+                        out.println(ex);
+                    }
+                }
+                break;
+                case "eliminarFal": {
+                    try {
+                        delAssistance(request, response);
+                    } catch (Exception ex) {
+                        out.println(ex);
+                    }
+                }
+                break;
+                case "añadirFal": {
+                    try {
+                        addAssistance(request, response);
+                    } catch (Exception ex) {
+                        out.println(ex);
+                    }
+                }
+                break;
                 default:
                     request.setAttribute("code", "<script type=\"text/javascript\">\n"
                             + "                               alert('error, Debe elegir una accion');\n"
                             + "                               </script>");
                     //enviar ese request a la pagina jsp
-                    RequestDispatcher disp = request.getRequestDispatcher("/HomeAdmin.jsp");
+                    RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
                     disp.forward(request, response);
                     break;
             }
@@ -349,7 +376,7 @@ public class CRUDalumno extends HttpServlet {
             boolean exito = model.registryAssistance(asistio, mat, idp, gr, fecha, request, response);
             if (exito) {
                 request.setAttribute("id_profe", idp);
-                request.setAttribute("gr", "null");
+                request.setAttribute("gr", request.getParameter("gr"));
                 request.setAttribute("code", "<script type=\"text/javascript\">\n"
                         + "                               alert('Exito, se guardó la asistencia');\n"
                         + "                               </script>");
@@ -358,7 +385,7 @@ public class CRUDalumno extends HttpServlet {
                 disp.forward(request, response);
             } else {
                 request.setAttribute("id_profe", idp);
-                request.setAttribute("gr", "null");
+                request.setAttribute("gr", request.getParameter("gr"));
                 request.setAttribute("code", "<script type=\"text/javascript\">\n"
                         + "                               alert('Error, ha ocurrido un error interno, asegurese de seleccionar un grupo, materia y alumnos');\n"
                         + "                               </script>");
@@ -370,6 +397,122 @@ public class CRUDalumno extends HttpServlet {
             out.println(e);
         }
 
+    }
+
+    private void getAssistance(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<alumno> alumnos = model.getAll(request, response);
+        List<alumno> alFromGr = model.getStudentsFrom(alumnos, request.getParameter("gr"));
+        int idp = Integer.parseInt(request.getParameter("idpr"));
+        List<Inasistencias> faltas = model.registryGet(idp, request.getParameter("materia"), request.getParameter("gr"));
+        if (faltas != null || alumnos != null || alFromGr != null) {
+            if (!faltas.isEmpty()) {
+                request.setAttribute("id_profe", idp);
+                request.setAttribute("gr", request.getParameter("gr"));
+                request.setAttribute("faltas", faltas);
+                request.setAttribute("faltados", alFromGr);
+                RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+                disp.forward(request, response);
+            } else {
+                request.setAttribute("id_profe", idp);
+                request.setAttribute("gr", request.getParameter("gr"));
+                request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                        + "                               alert('Informacion del sistema, No se tienen registros de inasistencia actualmente');\n"
+                        + "                               </script>");
+                RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+                disp.forward(request, response);
+            }
+        } else {
+            request.setAttribute("id_profe", idp);
+            request.setAttribute("gr", request.getParameter("gr"));
+            request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                    + "                               alert('Error, ha ocurrido un error interno, asegurese de seleccionar un grupo, materia y alumnos');\n"
+                    + "                               </script>");
+            RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+            disp.forward(request, response);
+        }
+
+    }
+
+    private void delAssistance(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Inasistencias falta = new Inasistencias();
+        int idp = Integer.parseInt(request.getParameter("idpr"));
+        try {
+            falta.setGrupo(request.getParameter("gr"));
+            falta.setId_maestro(idp);
+            falta.setId_materia(request.getParameter("materia"));
+            falta.setBoleta(Integer.parseInt(request.getParameter("boleta")));
+            String hoy = request.getParameter("dia");
+            java.sql.Date dia = java.sql.Date.valueOf(hoy);
+            falta.setDia(dia);
+            boolean exito = model.registryDelete(falta);
+            if (exito) {
+                request.setAttribute("id_profe", idp);
+                request.setAttribute("gr", request.getParameter("gr"));
+                request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                        + "                               alert('Exito, se elimino la assistencia');\n"
+                        + "                               </script>");
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+                disp.forward(request, response);
+            } else {
+                request.setAttribute("id_profe", idp);
+                request.setAttribute("gr", request.getParameter("gr"));
+                request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                        + "                               alert('Error, ha ocurrido un error interno, asegurese de seleccionar un grupo, materia y alumnos');\n"
+                        + "                               </script>");
+                RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+                disp.forward(request, response);
+            }
+        } catch (Exception ex) {
+            request.setAttribute("id_profe", idp);
+            request.setAttribute("gr", request.getParameter("gr"));
+            request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                    + "                               alert('Error, ha ocurrido un error interno, asegurese de seleccionar un grupo, materia y alumnos');\n"
+                    + "                               </script>");
+            RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+            disp.forward(request, response);
+        }
+    }
+
+    private void addAssistance(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Inasistencias falta = new Inasistencias();
+        int idp = Integer.parseInt(request.getParameter("idpr"));
+        try {
+            falta.setGrupo(request.getParameter("gr"));
+            falta.setId_maestro(idp);
+            falta.setId_materia(request.getParameter("materia"));
+            falta.setBoleta(Integer.parseInt(request.getParameter("boleta")));
+            String hoy = request.getParameter("dia");
+            java.sql.Date dia = java.sql.Date.valueOf(hoy);
+            falta.setDia(dia);
+            boolean exito = model.registryUpdate(falta);
+            if (exito) {
+                request.setAttribute("id_profe", idp);
+                request.setAttribute("gr", request.getParameter("gr"));
+                request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                        + "                               alert('Exito, se registro la inasistencia.');\n"
+                        + "                               </script>");
+                //enviar ese request a la pagina jsp
+                RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+                disp.forward(request, response);
+            } else {
+                request.setAttribute("id_profe", idp);
+                request.setAttribute("gr", request.getParameter("gr"));
+                request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                        + "                               alert('Error, La Boleta no es valida, intentelo nuevamente.');\n"
+                        + "                               </script>");
+                RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+                disp.forward(request, response);
+            }
+        } catch (Exception ex) {
+            request.setAttribute("id_profe", idp);
+            request.setAttribute("gr", request.getParameter("gr"));
+            request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                    + "                               alert('Error, ha ocurrido un error interno, asegurese de seleccionar un grupo, materia y alumnos');\n"
+                    + "                               </script>");
+            RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
+            disp.forward(request, response);
+        }
     }
 
 }
