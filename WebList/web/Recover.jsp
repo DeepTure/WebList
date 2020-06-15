@@ -42,7 +42,6 @@
                 background-size: cover;
                 transition: background 1s;
             }
-
             .logo{
                 background-image: url('Img/DeepTureD.png');
                 background-size: 100%;
@@ -64,8 +63,14 @@
                     transition: background 1s;
                 }
                 .fg-img{
-                    background-image: url('Img/ForegroundL.png');
+                    background-image: url('Img/ForegroundLHelp.png');
                     transition: background 1s;
+                }
+                @media screen and (orientation: landscape){
+                    .fg-img{
+                        background-image: url('Img/ForegroundL.png');
+                        transition: background 1s;
+                    }
                 }
                 .logo{
                     background-image: url('Img/DeepTureL.png');
