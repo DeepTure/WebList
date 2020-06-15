@@ -145,7 +145,7 @@
             </p>
 
             <!-- Iniciamos con la parte conde el administrador puede modificar los datos -->
-            <p class="title">
+            <p class="title white">
                 Alumnos
             </p>
             <p class="space">
@@ -154,7 +154,7 @@
 
             <!-- este es el formulario para los alumnos -->
             <form id="alumno" method="post" action="CRUDalumno">
-                <select class="inputtxt">
+                <select class="inputtxt white">
                     <%for (alumno a : alumnos) {%>
                     <option value="<%= a.getNombre()%>" id=""><%= a.getNombre()%></option>
                     <%}%>  
@@ -162,7 +162,7 @@
                 <p class="space">
                     <br>
                 </p>
-                <p class="atxt">
+                <p class="atxt white">
                     Boleta: <input type="number" name="boleta" class="inputtxt">
                 </p>
                 <p class="space">
@@ -171,19 +171,19 @@
 
                 <!-- el año de ingreso lo omití porque viene en la boleta y creo que no es necesario -->
 
-                <p class="atxt">
+                <p class="atxt white">
                     Nombres: <input type="text" name="nombres" class="inputtxt">
                 </p>
                 <p class="space">
                     <br>
                 </p>
-                <p class="atxt">
+                <p class="atxt white">
                     Apellido paterno: <input type="text" name="app" class="inputtxt">
                 </p>
                 <p class="space">
                     <br>
                 </p>
-                <p class="atxt">
+                <p class="atxt white">
                     Apellido materno: <input type="text" name="apm" class="inputtxt">
                 </p>
                 <p class="space">
@@ -193,13 +193,30 @@
                 <!-- Botones del  formulariio-->
                 <input type="hidden" id="gr" name="grupo" value="null">
                 <input type="hidden" id="command" name="instruction" value="null">
-                <input type="radio" name="election" class="new" value="new">Guardar como nuevo<br>
-                <input type="radio" name="election" class="save" value="save" onclick="">Guardar cambios<br>
-                <input type="radio" name="election" class="delete" value="delete" onclick="">Eliminar<br>
+                
+                <p class="atxt white">
+                    <input type="radio" style="width: 5%; height: 1vw;" name="election" class="new" value="new">
+                    Guardar como nuevo
+                </p>
+                <p class="space">
+                    <br>    
+                </p>
+                <p class="atxt white">
+                    <input type="radio" style="width: 5%; height: 1vw;" name="election" class="save" value="save" onclick="">
+                    Guardar cambios
+                </p>
+                <p class="space">
+                    <br>    
+                </p>
+                <p class="atxt white">
+                    <input type="radio" style="width: 5%; height: 1vw;" name="election" class="delete" value="delete" onclick="">
+                    Eliminar
+                </p>
                 <p class="space">
                     <br>
+                    <br>    
                 </p>
-                <input type="submit" value="Ejecutar acciones" class="inputbutn int">
+                <input type="submit" value="Ejecutar acciones" class="inputbutn int white">
             </form>
             <!-- Este script se encarga de cambiar la instruccion del hidden -->
             <script type="text/javascript">
@@ -233,20 +250,19 @@
                 });
             </script>
 
-
             <p class="space">
                 <br>
             </p>
 
             <!-- Formulario de para los profesores -->
-            <p class="title">
+            <p class="title white">
                 Profesores
             </p>
             <p class="space">
                 <br>
             </p>
             <form action="CRUDprofesor" method="post">
-                <select class="inputtxt">
+                <select class="inputtxt white">
                     <option>Profesor 1</option>
                     <option>Profesor 2</option>
                     <option>Profesor 3</option>
@@ -254,47 +270,76 @@
                 <p class="space">
                     <br>
                 </p>
-                <p class="atxt">
-                    Numero de empleado: <input type="number" name="nempleado" class="inputtxt">
+                <p class="atxt white">
+                    Numero de empleado: <input type="number" name="nempleado" class="inputtxt white">
                 </p>
                 <p class="space">
                     <br>
                 </p>
-                <p class="atxt">
-                    Nombres: <input type="text" name="nombres" class="inputtxt">
+                <p class="atxt white">
+                    Nombres: <input type="text" name="nombres" class="inputtxt white">
                 </p>
                 <p class="space">
                     <br>
                 </p>
-                <p class="atxt">
-                    Apellido paterno: <input type="text" name="app" class="inputtxt">
+                <p class="atxt white">
+                    Apellido paterno: <input type="text" name="app" class="inputtxt white">
                 </p>
                 <p class="space">
                     <br>
                 </p>
-                <p class="atxt">
-                    Apellido materno: <input type="text" name="apm" class="inputtxt">
+                <p class="atxt white">
+                    Apellido materno: <input type="text" name="apm" class="inputtxt white">
                 </p>
                 <p class="space">
                     <br>
                 </p>
-                <input type="checkbox" id="ch" name="ch" value="PSW"><label for="ch">PSW</label><br>
-                <input type="checkbox" id="ch2" name="ch" value="TPPC"><label for="ch2">TPPC</label><br>
-                <input type="checkbox" id="ch3" name="ch" value="BBDD"><label for="ch3">BBDD</label><br>
-                <input type="checkbox" id="ch4" name="ch" value="LPTI"><label for="ch4">LPTI</label>
+                <input type="checkbox" style="width: 5%; height: 1vw;" id="ch" name="ch" value="PSW">
+                <label for="ch" class="atxt white">PSW</label>
+                <p class="space">
+                    <br>  
+                </p>
+                <input type="checkbox" style="width: 5%; height: 1vw;" id="ch2" name="ch" value="TPPC">
+                <label for="ch2" class="atxt white">TPPC</label>
+                <p class="space">
+                    <br>  
+                </p>
+                <input type="checkbox" style="width: 5%; height: 1vw;" id="ch3" name="ch" value="BBDD">
+                <label for="ch3" class="atxt white">BBDD</label>
+                <p class="space">
+                    <br>  
+                </p>
+                <input type="checkbox" style="width: 5%; height: 1vw;" id="ch4" name="ch" value="LPTI">
+                <label for="ch4" class="atxt white">LPTI</label>
 
                 <p class="space">
                     <br>
                 </p>
                 <!-- Botones del  formulariio-->
                 <input type="hidden" id="commando" name="instruction" value="null">
-                <input type="radio" name="election" class="new2" value="new">Guardar como nuevo<br>
-                <input type="radio" name="election" class="save2" value="save" onclick="">Guardar cambios<br>
-                <input type="radio" name="election" class="delete2" value="delete" onclick="">Eliminar<br>
+                <p class="atxt white">
+                    <input type="radio" style="width: 5%; height: 1vw;" name="election" class="new2" value="new">
+                    Guardar como nuevo
+                </p>
                 <p class="space">
                     <br>
                 </p>
-                <input type="submit" value="Ejecutar acciones" class="inputbutn int">
+                <p class="atxt white">
+                    <input type="radio" style="width: 5%; height: 1vw;" name="election" class="save2" value="save" onclick="">
+                    Guardar cambios
+                </p>
+                <p class="space">
+                    <br>
+                </p>
+                <p class="atxt white">
+                    <input type="radio" style="width: 5%; height: 1vw;" name="election" class="delete2" value="delete" onclick="">
+                    Eliminar
+                </p>
+                <p class="space">
+                    <br>
+                    <br>
+                </p>
+                <input type="submit" value="Ejecutar acciones" class="inputbutn int white">
                 <p class="space">
                     <br>
                 </p>

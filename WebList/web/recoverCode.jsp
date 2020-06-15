@@ -92,26 +92,26 @@
                 <br>
                 <!--No quitar el br dinamico-->
             </p>
-            <p class="title">
+            <p class="title white">
                 Recuperar cuenta
             </p>
             <p class="space">
                 <br>
             </p>
-            <p class="atxt">
+            <p class="atxt white">
                 Para recuperar su contraseña ingrese el codigo que se mandó a su correo: 
             </p>
             <p class="space">
                 <br>
             </p>
             <form method="get" action="InicioSesionController">
-                <p class="atxt">
+                <p class="atxt white">
                     Codigo:
                 </p>
                 <p class="space">
                     <br>
                 </p>
-                <input type="text" name="codeU" class="inputtxt">
+                <input type="text" name="codeU" class="inputtxt white">
                 <p class="space">
                     <br>
                 </p>
@@ -119,9 +119,9 @@
                 <!-- Lo sé lo sé, hay una muy grave falla con la seguridad en este punto, pero es por facilidad, si lo quieres arreglar adelante -->
                 <input type="hidden" name="codeO" value="<%=request.getAttribute("recoverCode")%>">
                 <input type="hidden" name="status" value="<%=request.getAttribute("sts")%>">
-                <input type="submit" name="Send" class="inputbutn int" value="Enviar">
+                <input type="submit" name="Send" class="inputbutn int white" value="Enviar">
             </form>
-            <input type="button" class="inputbutn int" value="Menú principal" style="margin-top: 20%; margin-left: 80%;" onclick="location.href = 'index.jsp'">
+            <input type="button" class="inputbutn int white" value="Menú principal" style="margin-top: 20%; margin-left: 80%;" onclick="location.href = 'index.jsp'">
         </div>
     </body>
 </html>

@@ -92,38 +92,38 @@
                 <br>
                 <!--No quitar el br dinamico-->
             </p>
-            <p class="title">
+            <p class="title white">
                 Recuperar cuenta
             </p>
             <p class="space">
                 <br>
             </p>
-            <p class="atxt">
+            <p class="atxt white">
                 Para recuperar su contraseña llene los siguientes campos: 
             </p>
             <p class="space">
                 <br>
             </p>
             <form method="get" action="InicioSesionController">
-                <p class="atxt">
+                <p class="atxt white">
                     Correo electronico:
                 </p>
                 <p class="space">
                     <br>
                 </p>
-                <input type="text" name="correo" class="inputtxt">
+                <input type="text" name="correo" class="inputtxt white">
                 <p class="space">
                     <br>
                     <br>
                     <br>
                 </p>
-                <p class="atxt">
+                <p class="atxt white">
                     Número de empleado:
                 </p>
                 <p class="space">
                     <br>
                 </p>
-                <input type="text" name="id" class="inputtxt">
+                <input type="text" name="id" class="inputtxt white">
                 <p class="space">
                     <br>
                 </p>
@@ -131,9 +131,9 @@
                     <br>
                 </p>
                 <input type="hidden" name="instruction" value="recover">
-                <input type="submit" name="Send" class="inputbutn int" value="Enviar código">
+                <input type="submit" name="Send" class="inputbutn int white" value="Enviar código">
             </form>
-            <input type="button" class="inputbutn int" value="Menú principal" style="margin-top: 20%; margin-left: 80%;" onclick="location.href = 'index.jsp'">
+            <input type="button" class="inputbutn int white" value="Menú principal" style="margin-top: 20%; margin-left: 80%;" onclick="location.href = 'index.jsp'">
         </div>
     </body>
 </html>

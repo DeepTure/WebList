@@ -81,9 +81,13 @@
     </head>
     <body link="Black" vlink="Black" alink="Black" class="bg-img">
         <nav>
-            Mi Perfil
-            <br>
-            <br>
+            <p class="tittle">
+                Mi Perfil
+            </p>
+            <p class="space">
+                <br>
+                <br>
+            </p>
             <input type="button" name="Volver" value="Volver" class="inputbutn nav int padd" onclick="location.href = 'HomeAdmin.jsp'">
         </nav>
         <div class="blockAn fg-img">
@@ -92,13 +96,13 @@
                 <br>
                 <br>
             </div>
-            <div class="title" style="text-align: left; margin-left: 1.5rem;">
+            <div class="title white" style="text-align: left; margin-left: 1.5rem;">
                 Cambiar contraseña
             </div>
             <div class="space">
                 <br>
             </div>
-            <div class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+            <div class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                 Usar al menos 8 caracteres entre mayusculas y minusculas con al menos 1 numero
             </div>
             <div class="space">
@@ -106,7 +110,7 @@
             </div>
             <div>
                 <form method="post" id="password" style="text-align: left;" action="adminController">
-                    <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+                    <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                         Nueva contraseña
                     </p>
                     <div class="space">
@@ -117,7 +121,7 @@
                     <div class="space">
                         <br>
                     </div>
-                    <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+                    <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                         Confirmar contraseña
                     </p>
                     <div class="space">
@@ -127,7 +131,7 @@
                     <div class="space">
                         <br>
                     </div>
-                    <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+                    <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                         Ingrese su numero de empleado
                     </p><br>
                     <input type="text" id="pass2" class="inputtxt" name="id" style="margin-left: 1.5rem;">
@@ -135,14 +139,15 @@
                         <br>
                     </div>
                     <input type="submit" id="Login" value="Enviar" class="inputbutn int" style="margin-left: 1.5rem;">
-                    <div class="space">
                 </form>
-                <br>
-                <br>
-                <br>
+                <p class="space">
+                    <br>
+                    <br>
+                    <br>
+                </p>
                 <form method="post" id="password" style="text-align: left;" action="adminController">
             </div>
-            <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+            <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                 Añadir Correo
             </p>
             <div class="space">
@@ -153,7 +158,7 @@
             <div class="space">
                 <br>
             </div>
-            <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+            <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                 Ingrese su numero de empleado
             </p>
             <div class="space">

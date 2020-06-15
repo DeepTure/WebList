@@ -71,10 +71,6 @@
                     background-image: url('Img/DeepTureL.png');
                     transition: background 1s;
                 }
-                .logoHelp{
-                    background-image: url('Img/HelpD.png');
-                    transition: background 1s;
-                }
             }
         </style>
         <script src="JS/Validate.js"></script>
@@ -92,19 +88,21 @@
             </div>	
 
             <a href="Help.jsp" class="InitHelp">
-                <aside class="logoHelp">
+                <aside class="logoHelp white">
                     <div class="space">
                         <br>
                         <br>
                         <br>
+                        <br>
+                        <br>
                     </div>
-                    <div class="atxt">
+                    <div class="atxt white">
                         Ayuda
                     </div>
                 </aside>
             </a>
 
-            <div class="title">
+            <div class="title white">
                 Iniciar sesi&oacute;n
             </div>
 
@@ -114,42 +112,38 @@
 
             <div>
                 <form method="post" id="LogIn" action="InicioSesionController">
-                    <p class="subtitle">
+                    <p class="subtitle white">
                         Usuario
                     </p>
                     <div class="space">
                         <br>
                     </div>
-                    <input type="text" id="Account" class="inputtxt" name="user">
+                    <input type="text" id="Account" class="inputtxt white" name="user">
                     <div class="space">
                         <br>
                         <br>
                         <br>
                     </div>
-                    <p class="subtitle">
+                    <p class="subtitle white">
                         Contrase&ntilde;a
                     </p>
                     <div class="space">
                         <br>
                     </div>
-                    <input type="password" id="Password" class="inputtxt" name="pass">
+                    <input type="password" id="Password" class="inputtxt white" name="pass">
                     <div class="space">
                         <br>
                         <br>
                         <br>
                         <br>
                     </div><!-- Cuando tenga funcion este boton se convierte en submit-->
-                    <input type="submit" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int" >
+                    <input type="submit" id="Login" value="Inicia sesi&oacute;n" class="inputbutn int white" >
                     <div class="space">
                         <br>
                     </div>
-                    <input type="button" id="Recover" value="Recuperar cuenta" class="inputbutn int" onclick="location.href = 'Recover.jsp'">
+                    <input type="button" id="Recover" value="Recuperar cuenta" class="inputbutn int white" onclick="location.href = 'Recover.jsp'">
                 </form>
             </div>	
-            <script>
-
-            </script>
-
         </div>
     </body>
     <%=request.getAttribute("code")%>

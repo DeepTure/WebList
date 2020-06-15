@@ -126,7 +126,7 @@
                 <form action="CRUDalumno" method="post">
                     <input type="hidden" name="idpr" value="<%=id%>">
                     <input type="hidden" name="instruction" value="4IV7">
-                    <input type="submit" name="" value="4IV7">
+                    <input type="submit" class="inputbutn int nav" name="" value="4IV7">
                 </form>
 
                 <p class="space">
@@ -136,7 +136,7 @@
                 <form action="CRUDalumno" method="post">
                     <input type="hidden" name="idpr" value="<%=id%>">
                     <input type="hidden" name="instruction" value="4IV8">
-                    <input type="submit" name="" value="4IV8">
+                    <input type="submit" class="inputbutn int nav" name="" value="4IV8">
                 </form>
 
                 <p class="space">
@@ -146,7 +146,7 @@
                 <form action="CRUDalumno" method="post">
                     <input type="hidden" name="idpr" value="<%=id%>">
                     <input type="hidden" name="instruction" value="4IV9">
-                    <input type="submit" name="" value="4IV9">
+                    <input type="submit" class="inputbutn int nav" name="" value="4IV9">
                 </form>
             </div>
 
@@ -170,7 +170,7 @@
 
             <form action="CRUDalumno" method="post">
                 <div class="pdf">
-                    <p class="title">
+                    <p class="title white">
                         Horario del grupo
                     </p>
                     <div id="pdf">
@@ -183,12 +183,16 @@
                 </p>
 
                 <div name="lista">
-                    <p class="atxt">
+                    <p class="atxt white">
                         Materia<br>
-                        <input type="radio" name="rd" id="mat1" value="PSW"><label for="mat1">Programacion y servicios web</label><br>
-                        <input type="radio" name="rd" id="mat2" value="TPPC"><label for="mat2">Tecnicas de programacion con calidad</label><br>
-                        <input type="radio" name="rd" id="mat3" value="BBDD"><label for="mat3">Base de datos</label><br>
-                        <input type="radio" name="rd" id="mat4" value="LPTI"><label for="mat"4>Laboratorio de proyectos de tecnologias de la informacion</label>
+                        <input type="radio" style="width: 5%; height: 1vw;" name="rd" id="mat1" value="PSW">
+                        <label for="mat1" class="atxt white">Programacion y servicios web</label><br>
+                        <input type="radio" style="width: 5%; height: 1vw;" name="rd" id="mat2" value="TPPC">
+                        <label for="mat2" class="atxt white">Tecnicas de programacion con calidad</label><br>
+                        <input type="radio" style="width: 5%; height: 1vw;" name="rd" id="mat3" value="BBDD">
+                        <label for="mat3" class="atxt white">Base de datos</label><br>
+                        <input type="radio" style="width: 5%; height: 1vw;" name="rd" id="mat4" value="LPTI">
+                        <label for="mat" class="atxt white">Laboratorio de proyectos de tecnologias de la informacion</label>
                     </p>
                     <p class="space">
                         <br><br>
@@ -216,27 +220,51 @@
                 </div>
                 <!--botones para borrar o configurar las listas-->
                 <div>
-                    <p class="atxt">
+                    <p class="atxt white">
                         Lista actual: 
                     </p>
 
                     <div>
-                        <table border="2">
+                        <table>
                             <tr>
-                                <td>Boleta</td><td>Nombre</td><td>Asistencia</td>
+                                <td class="atxt white">
+                                    Boleta
+                                </td>
+                                <td class="atxt white">    
+                                    Nombre
+                                </td>
+                                <td class="atxt white">
+                                    Asistencia
+                                </td>
                             </tr>
                             <%  boolean entra;
                                 entra = false;
                                 if (alumnos != null) {%>
                             <%for (alumno a : alumnos) {%>
-                            <tr>
-                                <td><%=a.getBoleta()%></td><td><%=a.getNombre()%> <%=a.getApp()%></td><td><input type="checkbox" name="asistencia" value="<%=a.getBoleta()%>"></td>
-                            </tr>
+                                <tr>
+                                    <td class="atxt white">
+                                        <%=a.getBoleta()%>
+                                    </td>
+                                    <td class="atxt white">
+                                        <%=a.getNombre()%> <%=a.getApp()%>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" style="width: 5%; height: 1vw;" name="asistencia" value="<%=a.getBoleta()%>">
+                                    </td>
+                                </tr>
                             <%}
                                 entra = true;
                             } else {%>
                             <tr>
-                                <td>215</td><td>juan</td><td><input type="checkbox"></td>
+                                <td class="atxt white">
+                                    215
+                                </td>
+                                <td class="atxt white">
+                                    juan
+                                </td>
+                                <td>
+                                    <input type="checkbox" style="width: 5%; height: 1vw;">
+                                </td>
                             </tr>
                             <%}%>
                         </table>
@@ -253,7 +281,7 @@
                         <input type="hidden" name="idP" value="<%=id%>">
                         <!-- Este es el hidden donde tiene el grupo -->
                         <input type="hidden" name="gr" value="<%=request.getAttribute("gr")%>">
-                        <input type="submit" name="save" value="Guardar" id="btn" class="inputbutn int">
+                        <input type="submit" name="save" value="Guardar" id="btn" class="inputbutn int white">
                         <p class="space">
                             <br>
                         </p>
@@ -266,24 +294,32 @@
                             <input type="hidden" name="idpr" value="<%=id%>">
                             <input type="hidden" name="materia" id="command2" value="null">
                             <input type="hidden" name="instruction" value="getFalt">
-                            <input type="submit" name="delete" value="Revisar ultimo registro" id="btn" class="inputbutn int">
+                            <input type="submit" name="delete" value="Revisar ultimo registro" id="btn" class="inputbutn int white">
                         </form>
                     </div>
                     <%
                     } else if (faltas.isEmpty()) {
                     %>
-                    <p class="atxt">
+                    <p class="atxt white">
                         No hay faltas actualmente.
                     </p>
                     <%
                     } else {
                     %>
-                    <p class="atxt">
+                    <p class="atxt white">
                         Faltas del dia de hoy.
                     </p>
-                    <table border="2">
+                    <table>
                         <tr>
-                            <td>Boleta</td><td>Nombre</td><td>Accion</td>
+                            <td class="atxt white">
+                                Boleta
+                            </td>
+                            <td class="atxt white">
+                                Nombre
+                            </td>
+                            <td class="atxt white">
+                                Accion
+                            </td>
                         </tr>
                         <%
                         %>
@@ -299,7 +335,12 @@
                             <input type="hidden" name="boleta" value="<%=i.getBoleta()%>">
                             <input type="hidden" name="dia" value="<%=i.getDia()%>">
                             <input type="hidden" name="instruction" value="eliminarFal">
-                            <td><%=a.getBoleta()%></td><td><%=a.getNombre()%> <%=a.getApp()%></td><td><input type="submit" name="" value="Borrar" id="btn" class="inputbutn int"></td>
+                            <td>
+                                <%=a.getBoleta()%></td><td><%=a.getNombre()%> <%=a.getApp()%>
+                            </td>
+                            <td>
+                                <input type="submit" name="" value="Borrar" id="btn" class="inputbutn int white">
+                            </td>
                         </form>
                         </tr>
                         <%}
@@ -309,7 +350,7 @@
                         %>
                     </table>
                     <br>
-                    <p class="atxt">
+                    <p class="atxt white">
                         Insertar nueva falta.
                     </p>
                     <form action="CRUDalumno" method="post">
@@ -318,10 +359,10 @@
                         <input type="hidden" name="materia" value="<%=i.getId_materia()%>">
                         <input type="hidden" name="dia" value="<%=i.getDia()%>">
                         <label for="bol">Numero de Boleta</label>
-                        <input type="text" id="bol" name="boleta" class="inputtxt"/>
+                        <input type="text" id="bol" name="boleta" class="inputtxt white"/>
                         <input type="hidden" name="instruction" value="añadirFal">
                         <br>
-                        <input type="submit" name="" value="Guardar" id="btn" class="inputbutn int"/>
+                        <input type="submit" name="" value="Guardar" id="btn" class="inputbutn int white"/>
                     </form>
                     <%
                         }%>

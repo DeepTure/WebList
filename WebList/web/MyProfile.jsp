@@ -81,9 +81,13 @@
     </head>
     <body link="Black" vlink="Black" alink="Black" class="bg-img">
         <nav>
-            Mi Perfil
-            <br>
-            <br>
+            <p class="tittle">
+                Mi Perfil
+            </p>
+            <p class="space">
+                <br>
+                <br>
+            </p>
             <input type="button" name="Volver" value="Volver" class="inputbutn nav int padd" onclick="location.href = 'Home.jsp'">
         </nav>
         <div class="blockAn fg-img">
@@ -92,13 +96,13 @@
                 <br>
                 <br>
             </div>
-            <div class="title" style="text-align: left; margin-left: 1.5rem;">
+            <div class="title white" style="text-align: left; margin-left: 1.5rem;">
                 Cambiar contraseña
             </div>
             <div class="space">
                 <br>
             </div>
-            <div class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+            <div class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                 Usar al menos 8 caracteres entre mayusculas y minusculas con al menos 1 numero
             </div>
             <div class="space">
@@ -106,64 +110,65 @@
             </div>
             <div>
                 <form method="post" id="password" style="text-align: left;" action="CRUDprofesor">
-                    <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+                    <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                         Nueva contraseña
                     </p>
                     <div class="space">
                         <br>
                     </div>
                     <input type="hidden" name="instruction" value="changePassword">
-                    <input type="password" id="pass1" class="inputtxt" name="pass" style="margin-left: 1.5rem;">
+                    <input type="password" id="pass1" class="inputtxt white" name="pass" style="margin-left: 1.5rem;">
                     <div class="space">
                         <br>
                     </div>
-                    <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+                    <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                         Confirmar contraseña
                     </p>
                     <div class="space">
                         <br>
                     </div>
-                    <input type="password" id="pass2" class="inputtxt" name="pass2" style="margin-left: 1.5rem;">
+                    <input type="password" id="pass2" class="inputtxt white" name="pass2" style="margin-left: 1.5rem;">
                     <div class="space">
                         <br>
                     </div>
-                    <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+                    <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                         Ingrese su numero de empleado
                     </p><br>
-                    <input type="text" id="pass2" class="inputtxt" name="id" style="margin-left: 1.5rem;">
+                    <input type="text" id="pass2" class="inputtxt white" name="id" style="margin-left: 1.5rem;">
                     <div class="space">
                         <br>
                     </div>
-                    <input type="submit" id="Login" value="Enviar" class="inputbutn int" style="margin-left: 1.5rem;">
-                    <div class="space">
+                    <input type="submit" id="Login" value="Enviar" class="inputbutn int white" style="margin-left: 1.5rem;">
                 </form>
-                <br>
-                <br>
-                <br>
+                <p class="space">
+                    <br>
+                    <br>
+                    <br>
+                </p>
                 <form method="post" id="password" style="text-align: left;" action="CRUDprofesor">
             </div>
-            <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+            <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                 Añadir Correo
             </p>
             <div class="space">
                 <br>
             </div>
             <input type="hidden" name="instruction" value="newEmail">
-            <input type="text" id="email" class="inputtxt" name="email" style="margin-left: 1.5rem;">
+            <input type="text" id="email" class="inputtxt white" name="email" style="margin-left: 1.5rem;">
             <div class="space">
                 <br>
             </div>
-            <p class="subtitle" style="text-align: left; margin-left: 1.5rem;">
+            <p class="subtitle white" style="text-align: left; margin-left: 1.5rem;">
                 Ingrese su numero de empleado
             </p>
             <div class="space">
                 <br>
             </div>
-            <input type="text" id="email" class="inputtxt" name="id" style="margin-left: 1.5rem;">>
+            <input type="text" id="email" class="inputtxt white" name="id" style="margin-left: 1.5rem;">>
             <div class="space">
                 <br>
             </div>
-            <input type="submit" id="Login" value="Enviar" class="inputbutn int" style="margin-left: 1.5rem;">
+            <input type="submit" id="Login" value="Enviar" class="inputbutn int white" style="margin-left: 1.5rem;">
             </form>
         </div>
     </div>
