@@ -13,11 +13,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -42,13 +37,14 @@ public class alumnoDaoImp implements alumnoDaoApi {
     public boolean create(alumno al, String gr) throws Exception {
         Connection cn = connection.getConnection();
         //creamos la actualizacion preparada
-        PreparedStatement ps = cn.prepareStatement("INSERT INTO alumno VALUES(?,?,?,?,?)");
+        PreparedStatement ps = cn.prepareStatement("INSERT INTO alumno VALUES(?,?,?,?,?,?)");
         try {
             ps.setInt(1, al.getBoleta());
             ps.setString(2, al.getNombre());
             ps.setString(3, al.getApp());
             ps.setString(4, al.getApm());
             ps.setString(5, al.getCorreo());
+            ps.setString(6, al.getContraseña());
             ps.executeUpdate();
             //ahora agregamos el grupo
             ps = cn.prepareStatement("INSERT INTO dalumno_grupo VALUES(?,?)");
@@ -129,7 +125,8 @@ public class alumnoDaoImp implements alumnoDaoApi {
                 String app = rs.getString("App");
                 String apm = rs.getString("Apm");
                 String correo = rs.getString("correo");
-                alumno al = new alumno(boleta, nombres, app, apm, correo);
+                String pass = rs.getString("contrasena");
+                alumno al = new alumno(boleta, nombres, app, apm, correo,pass);
                 alumnos.add(al);
             }
         } catch (Exception e) {
@@ -329,6 +326,70 @@ public class alumnoDaoImp implements alumnoDaoApi {
             }
         } catch (Exception e) {
             return false;
+        } finally {
+            ps.close();
+            cn.close();
+        }
+    }
+
+    @Override
+    public boolean logIn(alumno al) throws Exception {
+        Connection cn = connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = cn.prepareStatement("SELECT contraseña FROM alumno WHERE boleta = ?");
+            ps.setInt(1, al.getBoleta());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                String pass = rs.getString(1);
+                if (pass.equals(al.getContraseña())) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            cn.close();
+            ps.close();
+        }
+    }
+
+    @Override
+    public List<Inasistencias> getIndividual(alumno al) throws Exception {
+        Connection cn = connection.getConnection();
+        PreparedStatement ps = null;
+        List<Inasistencias> faltas = new ArrayList();
+        ResultSet rs = null;
+        try {
+            java.util.Date utilDate = new Date();
+            java.sql.Date fechaconvertida = new java.sql.Date(utilDate.getTime());
+            ps = cn.prepareStatement("SELECT * FROM inasistencias WHERE boleta=?");
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Inasistencias falta = new Inasistencias();
+                falta.setBoleta(rs.getInt("boleta"));
+                falta.setId_materia(rs.getString("id_materia"));
+                falta.setId_maestro(rs.getInt("id_maestro"));
+                falta.setGrupo(rs.getString("grupo"));
+                java.util.Date hoy = rs.getDate("dia");
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(hoy);
+                calendar.add(Calendar.DAY_OF_YEAR, 1);
+                falta.setHora(new java.sql.Date(calendar.getTime().getTime()));
+                falta.setDia(new java.sql.Date(calendar.getTime().getTime()));
+                faltas.add(falta);
+            }
+            return faltas;
+        } catch (Exception e) {
+            return null;
         } finally {
             ps.close();
             cn.close();

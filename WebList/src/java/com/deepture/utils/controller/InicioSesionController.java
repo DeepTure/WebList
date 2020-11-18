@@ -6,8 +6,10 @@
 package com.deepture.utils.controller;
 
 import com.deepture.utils.classdata.administrador;
+import com.deepture.utils.classdata.alumno;
 import com.deepture.utils.classdata.profesor;
 import com.deepture.utils.models.adminDaoImp;
+import com.deepture.utils.models.alumnoDaoImp;
 import com.deepture.utils.models.profesorDaoImp;
 import com.deepture.utils.validate.adminValidate;
 import com.deepture.utils.validate.profesorValidacion;
@@ -40,6 +42,7 @@ public class InicioSesionController extends HttpServlet {
 
     private profesorDaoImp model;
     private adminDaoImp model2;
+    private alumnoDaoImp model3;
     //esta variable tendrá el codigo para entarar de nuevo a su cuenta
     private static String code = null;
 
@@ -79,8 +82,6 @@ public class InicioSesionController extends HttpServlet {
                         //enviar ese request a la pagina jsp
                         RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
                         disp.forward(request, response);
-
-                        ex.printStackTrace();
                     }
                 } else {
                     request.setAttribute("code", "<script type=\"text/javascript\">\n"
@@ -144,6 +145,7 @@ public class InicioSesionController extends HttpServlet {
         profesorValidacion val = new profesorValidacion();
         administrador admin = new administrador(id, pass);
         profesor profe = new profesor(id, pass);
+        alumno al = new alumno(id, pass);
         //validamos las entradas antes de que lleguen a la bbdd+
         if (!val.logInValidate(profe)) {
             request.setAttribute("code", "<script type=\"text/javascript\">\n"
@@ -155,6 +157,13 @@ public class InicioSesionController extends HttpServlet {
         }
         //este metodo de validacion se encuntra declarado en este servlet
         if (!adminLoginValidate(admin)) {
+            request.setAttribute("code", "<script type=\"text/javascript\">\n"
+                    + "                               alert('Sin acceso, los datos son erroneos');\n"
+                    + "                               </script>");
+            //enviar ese request a la pagina jsp
+            RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
+            disp.forward(request, response);
+        }if(!alumnoLoginValidate(al)){
             request.setAttribute("code", "<script type=\"text/javascript\">\n"
                     + "                               alert('Sin acceso, los datos son erroneos');\n"
                     + "                               </script>");
@@ -174,7 +183,12 @@ public class InicioSesionController extends HttpServlet {
                 request.setAttribute("gr", "null");
                 RequestDispatcher disp = request.getRequestDispatcher("/Home.jsp");
                 disp.forward(request, response);
-            } else {
+            } else if(model3.logIn(al)){
+            request.setAttribute("id_al", id);
+            request.setAttribute("instruccion", "alumno");
+                RequestDispatcher disp = request.getRequestDispatcher("/CRUDalumno.jsp");
+                disp.forward(request, response);
+            }else{
                 request.setAttribute("code", "<script type=\"text/javascript\">\n"
                         + "                               alert('Sin acceso');\n"
                         + "                               </script>");
@@ -202,6 +216,10 @@ public class InicioSesionController extends HttpServlet {
         return true;
     }
 
+    private boolean alumnoLoginValidate(alumno al) {
+        return true;
+    }
+    
     private void sendEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
         PrintWriter out = response.getWriter();
         String correo = request.getParameter("correo");
@@ -243,7 +261,7 @@ public class InicioSesionController extends HttpServlet {
             request.setAttribute("code", "<script type=\"text/javascript\">\n"
                     + "                               alert('Ingreso datos no registrados anteriormente');\n"
                     + "                               </script>");
-            //enviar ese request a la pagina jsp
+            //enviar ese request a la pagina jspva
             RequestDispatcher disp = request.getRequestDispatcher("/index.jsp");
             disp.forward(request, response);
         }
@@ -261,7 +279,7 @@ public class InicioSesionController extends HttpServlet {
         String correoEnvia = "jafetkevin575@gmail.com";
         String contrasena = "nG39!5065BGNvH";
         String receptor = correo;
-        String asunto = "Rcuperacion de contraseña";
+        String asunto = "Recuperacion de contraseña";
         String mensaje = "alguien intenta cambiar su contraseña, en caso de no ser usted ponerse en contacto con el administrador, CODIGO: " + getNewCode();
 
         MimeMessage mail = new MimeMessage(sesion);

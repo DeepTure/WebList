@@ -93,8 +93,9 @@ public class CRUDalumno extends HttpServlet {
                     String lastNM = request.getParameter("apm");
                     String email = "email@.com";
                     String group = request.getParameter("grupo");
-                    if (group != "null" && boleta.length() > 0 && boleta.matches("^[0-9]+${1,10}+$") && names.length() > 0 && lastNF.length() > 0 && lastNM.length() > 0) {
-                        alumno al = new alumno(Integer.parseInt(boleta), names, lastNF, lastNM, email);
+                    String pass = request.getParameter("pass");
+                    if (group != "null" && boleta.length() > 0 && boleta.matches("^[0-9]+${1,10}+$") && names.length() > 0 && lastNF.length() > 0 && lastNM.length() > 0 && pass.length()>7) {
+                        alumno al = new alumno(Integer.parseInt(boleta), names, lastNF, lastNM, email,pass);
                         newStudents(al, group, request, response);
                     } else {
                         request.setAttribute("code", "<script type=\"text/javascript\">\n"
@@ -123,8 +124,9 @@ public class CRUDalumno extends HttpServlet {
                     String lastNM = request.getParameter("apm");
                     String email = "email@.com";
                     String group = request.getParameter("grupo");
-                    if (group != "null" && boleta.length() > 0 && boleta.matches("^[0-9]+${1,10}+$") && names.length() > 0 && lastNF.length() > 0 && lastNM.length() > 0) {
-                        alumno al = new alumno(Integer.parseInt(boleta), names, lastNF, lastNM, email);
+                    String pass = request.getParameter("pass");
+                    if (group != "null" && boleta.length() > 0 && boleta.matches("^[0-9]+${1,10}+$") && names.length() > 0 && lastNF.length() > 0 && lastNM.length() > 0 && pass.length()>7) {
+                        alumno al = new alumno(Integer.parseInt(boleta), names, lastNF, lastNM, email,pass);
                         updateStudents(al, group, request, response);
                     } else {
                         request.setAttribute("code", "<script type=\"text/javascript\">\n"
@@ -227,6 +229,9 @@ public class CRUDalumno extends HttpServlet {
                     }
                 }
                 break;
+                case "alumno":
+                    
+                    break;
                 default:
                     request.setAttribute("code", "<script type=\"text/javascript\">\n"
                             + "                               alert('error, Debe elegir una accion');\n"
@@ -244,6 +249,14 @@ public class CRUDalumno extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private void getFaltas(alumno al, HttpServletRequest request, HttpServletResponse response)throws Exception{
+        
+    }
+    
+    private void changePassword(alumno al, String pass, HttpServletRequest request, HttpServletResponse response)throws Exception{
+        
+    }
 
     //metodo para agregar nuevo alumno
     private void newStudents(alumno al, String gr, HttpServletRequest request, HttpServletResponse response) throws Exception {

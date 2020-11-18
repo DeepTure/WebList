@@ -24,6 +24,10 @@ public interface alumnoDaoApi {
     boolean update(alumno al) throws Exception;
 
     boolean delete(int boleta) throws Exception;
+    
+    boolean logIn(alumno al)throws Exception;
+    
+    List<Inasistencias> getIndividual(alumno al)throws Exception;
 
     List<alumno> getAll(HttpServletRequest request, HttpServletResponse response) throws Exception;
 

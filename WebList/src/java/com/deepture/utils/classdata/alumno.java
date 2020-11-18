@@ -16,13 +16,20 @@ public class alumno {
     private String app;
     private String apm;
     private String correo;
+    private String contrasena;
+    
+   public alumno(int boleta, String contraseña){
+       this.boleta = boleta;
+       this.contrasena = contraseña;
+   }
 
-    public alumno(int boleta, String nombre, String app, String apm, String correo) {
+    public alumno(int boleta, String nombre, String app, String apm, String correo, String contraseña) {
         this.boleta = boleta;
         this.nombre = nombre;
         this.app = app;
         this.apm = apm;
         this.correo = correo;
+        this.contrasena = contraseña;
     }
 
     public alumno() {
@@ -66,5 +73,13 @@ public class alumno {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public String getContraseña() {
+        return contrasena;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contrasena = contraseña;
     }
 }

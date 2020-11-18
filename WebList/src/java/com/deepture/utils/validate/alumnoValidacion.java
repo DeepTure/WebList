@@ -13,7 +13,7 @@ import com.deepture.utils.validate.Dao.alumnoValDao;
  * @author JAFET
  */
 public class alumnoValidacion implements alumnoValDao {
-
+//falta validar
     @Override
     public String newStudentsValidate(alumno al, String gr) {
         String vnombre = al.getNombre();
